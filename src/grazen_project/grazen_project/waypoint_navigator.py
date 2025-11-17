@@ -8,8 +8,20 @@ from gazebo_msgs.srv import SetEntityState
 import math
 import time
 
+# --- NEW FUNCTION FOR ERROR CALCULATION ---
+def get_distance_error(target_pose, actual_pose):
+    """Calculates Euclidean distance between two PoseStamped objects."""
+    tx = target_pose.pose.position.x
+    ty = target_pose.pose.position.y
+    
+    ax = actual_pose.pose.position.x
+    ay = actual_pose.pose.position.y
+    
+    # Distance formula: sqrt((x2-x1)^2 + (y2-y1)^2)
+    error = math.sqrt((tx - ax)**2 + (ty - ay)**2)
+    return error
+
 def create_pose(x, y, yaw=0.0):
-    """Helper to create a PoseStamped message."""
     pose = PoseStamped()
     pose.header.frame_id = 'map'
     pose.pose.position.x = x
@@ -20,14 +32,6 @@ def create_pose(x, y, yaw=0.0):
     return pose
 
 def teleport_robot(navigator, x, y, yaw=0.0):
-    """
-    Teleport the robot using the /set_entity_state service.
-    """
-    # Create a client attached to the navigator's internal node
-    # (BasicNavigator wraps a node, we can access it via navigator)
-    # If that access is restricted, we create a temporary node or use rclpy direct
-    
-    # Simplest way: create a raw node just for this service call
     service_node = rclpy.create_node('service_client_temp')
     client = service_node.create_client(SetEntityState, '/set_entity_state')
     
@@ -37,10 +41,10 @@ def teleport_robot(navigator, x, y, yaw=0.0):
         return False
 
     req = SetEntityState.Request()
-    req.state.name = 'burger' # Verify this name in Gazebo
+    req.state.name = 'burger' # Ensure this matches Gazebo!
     req.state.pose.position.x = float(x)
     req.state.pose.position.y = float(y)
-    req.state.pose.position.z = 0.05
+    req.state.pose.position.z = 0.30 # Drop from height to avoid floor clipping
     req.state.pose.orientation.z = math.sin(yaw / 2.0)
     req.state.pose.orientation.w = math.cos(yaw / 2.0)
     
@@ -52,8 +56,8 @@ def teleport_robot(navigator, x, y, yaw=0.0):
     return result.success
 
 def main(args=None):
+    print("Starting Navigation with Error Tracking")
     rclpy.init(args=args)
-    
     navigator = BasicNavigator()
     
     # --- CONFIGURATION ---
@@ -65,47 +69,68 @@ def main(args=None):
     B = create_pose(B_x, B_y)
 
     print("=" * 50)
-    print(f"Starting Navigation: A({A_x},{A_y}) -> B({B_x},{B_y}) -> A")
+    print(f"Starting Navigation with Error Tracking")
     print("=" * 50)
 
-    # 1. Teleport Robot
-    print("[1/4] Teleporting robot to A...")
+    # 1. Teleport
+    print("[1/4] Teleporting...")
     teleport_robot(navigator, A_x, A_y)
     time.sleep(1.0) 
-
-    # 2. Set Initial Pose (Reset AMCL)
-    print("[2/4] Setting Initial Pose for Nav2...")
-    navigator.setInitialPose(A)
     
-    # 3. Wait for Nav2
-    print("[3/4] Waiting for Nav2...")
+    # 2. Reset Nav2
+    print("[2/4] Resetting Nav2 Pose...")
+    navigator.setInitialPose(A)
     navigator.waitUntilNav2Active()
     
-    # 4. Go to B
-    print("[4/4] Going to B...")
+    # 3. Go to B
+    print("[3/4] Going to B...")
     navigator.goToPose(B)
     
+    # --- TRACKING LOOP ---
+    final_pose_b = None
     while not navigator.isTaskComplete():
-        pass
+        # Capture the latest feedback from Nav2
+        feedback = navigator.getFeedback()
+        if feedback:
+            final_pose_b = feedback.current_pose
+            # Optional: Print live distance remaining
+            # print(f'Distance remaining: {feedback.distance_remaining:.2f}m', end='\r')
 
-    if navigator.getResult() == TaskResult.SUCCEEDED:
-        print("✅ Reached B!")
-        time.sleep(1.0)
-        
-        # 5. Go back to A
-        print("Returning to A...")
-        navigator.goToPose(A)
-        while not navigator.isTaskComplete():
-            pass
-            
-        if navigator.getResult() == TaskResult.SUCCEEDED:
-            print("✅ Returned to A!")
-        else:
-            print("❌ Failed return trip.")
+    if navigator.getResult() == TaskResult.SUCCEEDED and final_pose_b:
+        # CALCULATE ERROR
+        error_b = get_distance_error(B, final_pose_b)
+        print(f"\n✅ Reached B!")
+        print(f"   Target: ({B_x}, {B_y})")
+        print(f"   Actual: ({final_pose_b.pose.position.x:.3f}, {final_pose_b.pose.position.y:.3f})")
+        print(f"   Error (Drift): {error_b:.4f} meters") # 
     else:
         print("❌ Failed to reach B.")
 
-    # Do NOT shutdown lifecycle, so you can run again
+    time.sleep(1.0)
+
+    # 4. Return to A
+    print("\n[4/4] Returning to A...")
+    navigator.goToPose(A)
+    
+    final_pose_a = None
+    while not navigator.isTaskComplete():
+        feedback = navigator.getFeedback()
+        if feedback:
+            final_pose_a = feedback.current_pose
+
+    if navigator.getResult() == TaskResult.SUCCEEDED and final_pose_a:
+        # CALCULATE ERROR
+        error_a = get_distance_error(A, final_pose_a)
+        print(f"\n✅ Returned to A!")
+        print(f"   Target: ({A_x}, {A_y})")
+        print(f"   Actual: ({final_pose_a.pose.position.x:.3f}, {final_pose_a.pose.position.y:.3f})")
+        print(f"   Error (Drift): {error_a:.4f} meters")
+        
+        print("-" * 30)
+        print(f"Total Round Trip Error: {error_b + error_a:.4f} meters")
+    else:
+        print("❌ Failed return trip.")
+
     rclpy.shutdown()
 
 if __name__ == '__main__':
