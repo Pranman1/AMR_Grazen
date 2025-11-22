@@ -14,7 +14,8 @@ setup(
         ('share/' + package_name, ['package.xml']),
         
         # --- ADD THIS LINE ---
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py'))
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,6 +27,7 @@ setup(
     entry_points={
         'console_scripts': [
             'waypoint_navigator = grazen_project.waypoint_navigator:main',
+            'moving_obstacle = grazen_project.moving_obstacle:main',
         ],
     },
 )
