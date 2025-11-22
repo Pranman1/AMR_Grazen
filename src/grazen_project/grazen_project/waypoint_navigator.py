@@ -1,26 +1,38 @@
 #!/usr/bin/env python3
 
 import rclpy
+from rclpy.node import Node
 from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 from geometry_msgs.msg import PoseStamped
 from gazebo_msgs.srv import SetEntityState
-import sys
-import os
-import time
 import math
+import time
+from visualization_msgs.msg import Marker, MarkerArray
 
-def create_pose(x, y):
+# --- NEW FUNCTION FOR ERROR CALCULATION ---
+def get_distance_error(target_pose, actual_pose):
+    """Calculates Euclidean distance between two PoseStamped objects."""
+    tx = target_pose.pose.position.x
+    ty = target_pose.pose.position.y
+    
+    ax = actual_pose.pose.position.x
+    ay = actual_pose.pose.position.y
+    
+    # Distance formula: sqrt((x2-x1)^2 + (y2-y1)^2)
+    error = math.sqrt((tx - ax)**2 + (ty - ay)**2)
+    return error
+
+def create_pose(x, y, yaw=0.0):
     pose = PoseStamped()
     pose.header.frame_id = 'map'
-    pose.pose.position.x = float(x)
-    pose.pose.position.y = float(y)
+    pose.pose.position.x = x
+    pose.pose.position.y = y
     pose.pose.position.z = 0.0
-    pose.pose.orientation.w = 1.0 
+    pose.pose.orientation.z = math.sin(yaw / 2.0)
+    pose.pose.orientation.w = math.cos(yaw / 2.0)
     return pose
 
-def teleport_robot(navigator, x, y):
-    """ Teleports the robot in Gazebo to the start position """
-    # Create a temp node to call the Gazebo service
+def teleport_robot(navigator, x, y, yaw=0.0):
     service_node = rclpy.create_node('service_client_temp')
     client = service_node.create_client(SetEntityState, '/set_entity_state')
     
@@ -30,14 +42,12 @@ def teleport_robot(navigator, x, y):
         return False
 
     req = SetEntityState.Request()
-    req.state.name = 'burger' # Make sure this matches your Gazebo model name!
+    req.state.name = 'burger' # Ensure this matches Gazebo!
     req.state.pose.position.x = float(x)
     req.state.pose.position.y = float(y)
-    req.state.pose.position.z = 0.30 # Drop from 30cm to avoid floor clipping
-    req.state.pose.orientation.x = 0.0
-    req.state.pose.orientation.y = 0.0
-    req.state.pose.orientation.z = 0.0
-    req.state.pose.orientation.w = 1.0
+    req.state.pose.position.z = 0.30 # Drop from height to avoid floor clipping
+    req.state.pose.orientation.z = math.sin(yaw / 2.0)
+    req.state.pose.orientation.w = math.cos(yaw / 2.0)
     
     future = client.call_async(req)
     rclpy.spin_until_future_complete(service_node, future)
@@ -46,78 +56,111 @@ def teleport_robot(navigator, x, y):
     service_node.destroy_node()
     return result.success
 
-def read_waypoints(filepath):
-    points = []
-    if not os.path.exists(filepath):
-        print(f"Error: File not found at {filepath}")
-        return []
 
-    with open(filepath, 'r') as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#') or line.startswith('['):
-                continue
-            
-            parts = line.split()
-            try:
-                # Assuming Column 0 = N (x), Column 1 = E (y)
-                x = float(parts[0])
-                y = float(parts[1])
-                points.append((x, y))
-            except ValueError:
-                pass 
-    return points
+def publish_markers(node, pose_a, pose_b):
+    """Publishes A (Green) and B (Red) markers to RViz."""
+    publisher = node.create_publisher(MarkerArray, '/waypoint_markers', 10)
+    markers = MarkerArray()
 
-def main():
-    rclpy.init()
+    def create_marker(id, pose, r, g, b, text):
+        m = Marker()
+        m.header.frame_id = "map"
+        m.id = id
+        m.type = Marker.SPHERE
+        m.action = Marker.ADD
+        m.pose = pose.pose
+        m.scale.x = 0.3; m.scale.y = 0.3; m.scale.z = 0.3
+        m.color.a = 1.0; m.color.r = r; m.color.g = g; m.color.b = b
+        return m
+
+    markers.markers.append(create_marker(0, pose_a, 0.0, 1.0, 0.0, "A"))
+    markers.markers.append(create_marker(1, pose_b, 1.0, 0.0, 0.0, "B"))
+
+    # Publish a few times to ensure RViz gets it
+    for _ in range(5):
+        publisher.publish(markers)
+        time.sleep(0.1)
+
+
+
+def main(args=None):
+    print("Starting Navigation with Error Tracking")
+    rclpy.init(args=args)
     navigator = BasicNavigator()
-
+    
     # --- CONFIGURATION ---
-    waypoint_file = '/home/pranav/waypoints.txt' 
+    A_x, A_y = -2.0, -0.5
+    B_x, B_y = 3.8, -0.6 
     # ---------------------
 
-    print(f"Reading waypoints from: {waypoint_file}")
-    waypoints = read_waypoints(waypoint_file)
+    A = create_pose(A_x, A_y)
+    B = create_pose(B_x, B_y)
+
     
-    if not waypoints:
-        print("No valid waypoints found! Check file path and format.")
-        return
 
-    # 1. GET START POINT (The first line in your file)
-    start_x, start_y = waypoints[0]
-    print(f"Start Point detected: ({start_x}, {start_y})")
+    print("=" * 50)
+    print(f"Starting Navigation with Error Tracking")
+    print("=" * 50)
 
-    # 2. TELEPORT & RESET (Fixes the LiDAR mismatch)
-    print("[1/3] Teleporting robot to Start Point...")
-    teleport_robot(navigator, start_x, start_y)
-    time.sleep(1.0) # Let physics settle
-
-    print("[2/3] Resetting Nav2 Localization...")
-    initial_pose = create_pose(start_x, start_y)
-    navigator.setInitialPose(initial_pose)
+    # 1. Teleport
+    print("[1/4] Teleporting...")
+    teleport_robot(navigator, A_x, A_y)
+    time.sleep(1.0) 
     
-    print("[3/3] Waiting for Nav2...")
+    # 2. Reset Nav2
+    print("[2/4] Resetting Nav2 Pose...")
+    navigator.setInitialPose(A)
     navigator.waitUntilNav2Active()
-    print("Nav2 is Ready!")
+    
+    # 3. Go to B
+    print("[3/4] Going to B...")
+    navigator.goToPose(B)
+    
+    # --- TRACKING LOOP ---
+    final_pose_b = None
+    while not navigator.isTaskComplete():
+        # Capture the latest feedback from Nav2
+        feedback = navigator.getFeedback()
+        if feedback:
+            final_pose_b = feedback.current_pose
+            # Optional: Print live distance remaining
+            # print(f'Distance remaining: {feedback.distance_remaining:.2f}m', end='\r')
 
-    # 3. DRIVE LOOP (Skip the first point since we just teleported there)
-    # We start from index 1, not 0
-    for i, (x, y) in enumerate(waypoints[1:], start=1):
-        print(f"\nDriving to Waypoint {i+1}: ({x}, {y})...")
+    if navigator.getResult() == TaskResult.SUCCEEDED and final_pose_b:
+        # CALCULATE ERROR
+        error_b = get_distance_error(B, final_pose_b)
+        print(f"\n✅ Reached B!")
+        print(f"   Target: ({B_x}, {B_y})")
+        print(f"   Actual: ({final_pose_b.pose.position.x:.3f}, {final_pose_b.pose.position.y:.3f})")
+        print(f"   Error (Drift): {error_b:.4f} meters") # 
+    else:
+        print("❌ Failed to reach B.")
+
+    time.sleep(1.0)
+
+    # 4. Return to A
+    print("\n[4/4] Returning to A...")
+    navigator.goToPose(A)
+    
+    final_pose_a = None
+    while not navigator.isTaskComplete():
+        feedback = navigator.getFeedback()
+        if feedback:
+            final_pose_a = feedback.current_pose
+
+    if navigator.getResult() == TaskResult.SUCCEEDED and final_pose_a:
+        # CALCULATE ERROR
+        error_a = get_distance_error(A, final_pose_a)
+        print(f"\n✅ Returned to A!")
+        print(f"   Target: ({A_x}, {A_y})")
+        print(f"   Actual: ({final_pose_a.pose.position.x:.3f}, {final_pose_a.pose.position.y:.3f})")
+        print(f"   Error (Drift): {error_a:.4f} meters")
         
-        goal_pose = create_pose(x, y)
-        navigator.goToPose(goal_pose)
+        print("-" * 30)
+        print(f"Total Round Trip Error: {error_b + error_a:.4f} meters")
+    else:
+        print("❌ Failed return trip.")
 
-        while not navigator.isTaskComplete():
-            pass
-
-        result = navigator.getResult()
-        if result == TaskResult.SUCCEEDED:
-            print(f"✅ Reached Waypoint {i+1}")
-        else:
-            print(f"❌ Failed to reach Waypoint {i+1}")
-
-    print("\nMission Complete!")
     rclpy.shutdown()
 
 if __name__ == '__main__':

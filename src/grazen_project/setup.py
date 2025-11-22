@@ -28,7 +28,9 @@ setup(
         'console_scripts': [
             'waypoint_navigator = grazen_project.waypoint_navigator:main',
             'moving_obstacle = grazen_project.moving_obstacle:main',
-            'file_navigator = grazen_project.file_navigator:main', # <--- ADD THIS
+            'file_navigator = grazen_project.file_navigator:main', # <--- ADD THIS#
+            'relative_navigator = grazen_project.relative_navigator:main',
+            'universal_navigator = grazen_project.universal_navigator:main',
         ],
     },
 )

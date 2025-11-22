@@ -1,0 +1,37 @@
+# ROS2 Workspace .gitignore
+
+# Build artifacts
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# colcon
+.colcon/
+*.cmake.user
+
+# Keep only your custom package source code
+# Everything else (3rd party packages) should be ignored
+
