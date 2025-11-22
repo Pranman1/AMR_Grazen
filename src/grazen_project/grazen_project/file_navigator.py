@@ -7,7 +7,6 @@ from gazebo_msgs.srv import SetEntityState
 import sys
 import os
 import time
-import math
 
 def create_pose(x, y):
     pose = PoseStamped()
@@ -18,32 +17,35 @@ def create_pose(x, y):
     pose.pose.orientation.w = 1.0 
     return pose
 
-def teleport_robot(navigator, x, y):
-    """ Teleports the robot in Gazebo to the start position """
-    # Create a temp node to call the Gazebo service
-    service_node = rclpy.create_node('service_client_temp')
-    client = service_node.create_client(SetEntityState, '/set_entity_state')
+def teleport_robot(node, x, y):
+    """ Teleports the physical robot in Gazebo """
+    # Create a temporary client to talk to Gazebo
+    client = node.create_client(SetEntityState, '/set_entity_state')
     
+    # Wait for Gazebo to be ready
     if not client.wait_for_service(timeout_sec=2.0):
-        print("Warning: /set_entity_state service not available. Robot will not teleport.")
-        service_node.destroy_node()
+        print("❌ ERROR: Gazebo /set_entity_state service not found!")
         return False
 
     req = SetEntityState.Request()
-    req.state.name = 'burger' # Make sure this matches your Gazebo model name!
+    # --- CONFIRMED MODEL NAME ---
+    req.state.name = 'burger' 
+    # ----------------------------
     req.state.pose.position.x = float(x)
     req.state.pose.position.y = float(y)
-    req.state.pose.position.z = 0.30 # Drop from 30cm to avoid floor clipping
-    req.state.pose.orientation.x = 0.0
-    req.state.pose.orientation.y = 0.0
-    req.state.pose.orientation.z = 0.0
+    req.state.pose.position.z = 0.30  # Drop from 30cm to avoid floor clipping
     req.state.pose.orientation.w = 1.0
     
+    print(f"Attempting to teleport 'burger' to ({x}, {y})...")
     future = client.call_async(req)
-    rclpy.spin_until_future_complete(service_node, future)
+    rclpy.spin_until_future_complete(node, future)
     
     result = future.result()
-    service_node.destroy_node()
+    if result.success:
+        print("✅ Gazebo Teleport Successful")
+    else:
+        print("❌ Gazebo Teleport Failed (Check model name?)")
+        
     return result.success
 
 def read_waypoints(filepath):
@@ -57,10 +59,8 @@ def read_waypoints(filepath):
             line = line.strip()
             if not line or line.startswith('#') or line.startswith('['):
                 continue
-            
             parts = line.split()
             try:
-                # Assuming Column 0 = N (x), Column 1 = E (y)
                 x = float(parts[0])
                 y = float(parts[1])
                 points.append((x, y))
@@ -70,6 +70,10 @@ def read_waypoints(filepath):
 
 def main():
     rclpy.init()
+    
+    # We need a raw node for the service client
+    # (BasicNavigator hides its node, so we make a temp one for teleporting)
+    temp_node = rclpy.create_node('teleporter')
     navigator = BasicNavigator()
 
     # --- CONFIGURATION ---
@@ -80,28 +84,27 @@ def main():
     waypoints = read_waypoints(waypoint_file)
     
     if not waypoints:
-        print("No valid waypoints found! Check file path and format.")
+        print("No valid waypoints found!")
         return
 
-    # 1. GET START POINT (The first line in your file)
+    # 1. GET START POINT
     start_x, start_y = waypoints[0]
-    print(f"Start Point detected: ({start_x}, {start_y})")
+    print(f"Start Point: ({start_x}, {start_y})")
 
-    # 2. TELEPORT & RESET (Fixes the LiDAR mismatch)
-    print("[1/3] Teleporting robot to Start Point...")
-    teleport_robot(navigator, start_x, start_y)
+    # 2. TELEPORT (The Missing Step)
+    teleport_robot(temp_node, start_x, start_y)
     time.sleep(1.0) # Let physics settle
+    temp_node.destroy_node() # Clean up temp node
 
-    print("[2/3] Resetting Nav2 Localization...")
+    # 3. RESET NAV2 (The Localization Step)
+    print("Resetting Nav2 Localization...")
     initial_pose = create_pose(start_x, start_y)
     navigator.setInitialPose(initial_pose)
     
-    print("[3/3] Waiting for Nav2...")
+    print("Waiting for Nav2...")
     navigator.waitUntilNav2Active()
-    print("Nav2 is Ready!")
 
-    # 3. DRIVE LOOP (Skip the first point since we just teleported there)
-    # We start from index 1, not 0
+    # 4. DRIVE LOOP (Start from index 1)
     for i, (x, y) in enumerate(waypoints[1:], start=1):
         print(f"\nDriving to Waypoint {i+1}: ({x}, {y})...")
         
@@ -111,8 +114,7 @@ def main():
         while not navigator.isTaskComplete():
             pass
 
-        result = navigator.getResult()
-        if result == TaskResult.SUCCEEDED:
+        if navigator.getResult() == TaskResult.SUCCEEDED:
             print(f"✅ Reached Waypoint {i+1}")
         else:
             print(f"❌ Failed to reach Waypoint {i+1}")
