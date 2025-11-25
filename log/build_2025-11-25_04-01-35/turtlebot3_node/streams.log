@@ -1,0 +1,87 @@
+[0.014s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/pranav/turtle_test/src/turtlebot3/turtlebot3_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/turtlebot3_node
+[0.252s] -- The C compiler identification is GNU 11.4.0
+[0.252s] -- The CXX compiler identification is GNU 11.4.0
+[0.252s] -- Detecting C compiler ABI info
+[0.252s] -- Detecting C compiler ABI info - done
+[0.252s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.252s] -- Detecting C compile features
+[0.252s] -- Detecting C compile features - done
+[0.252s] -- Detecting CXX compiler ABI info
+[0.260s] -- Detecting CXX compiler ABI info - done
+[0.271s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.271s] -- Detecting CXX compile features
+[0.271s] -- Detecting CXX compile features - done
+[0.273s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.410s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.500s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.538s] -- Found dynamixel_sdk: 3.8.4 (/home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake)
+[0.543s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.593s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.601s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.613s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.629s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.652s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.688s] -- Found message_filters: 4.3.11 (/opt/ros/humble/share/message_filters/cmake)
+[0.726s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.729s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.807s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.836s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.870s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.879s] -- Looking for pthread.h
+[0.960s] -- Looking for pthread.h - found
+[0.960s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.024s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.026s] -- Found Threads: TRUE  
+[1.067s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.082s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.097s] -- Found std_srvs: 4.9.0 (/opt/ros/humble/share/std_srvs/cmake)
+[1.106s] -- Found tf2: 0.25.16 (/opt/ros/humble/share/tf2/cmake)
+[1.114s] -- Found tf2_ros: 0.25.16 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.190s] -- Found turtlebot3_msgs: 2.4.0 (/home/pranav/turtle_test/install/turtlebot3_msgs/share/turtlebot3_msgs/cmake)
+[1.278s] -- Configuring done
+[1.293s] -- Generating done
+[1.298s] -- Build files have been written to: /home/pranav/turtle_test/build/turtlebot3_node
+[1.307s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/pranav/turtle_test/src/turtlebot3/turtlebot3_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/turtlebot3_node
+[1.309s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pranav/turtle_test/build/turtlebot3_node -- -j20 -l20
+[1.351s] [  7%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/diff_drive_controller.cpp.o[0m
+[1.351s] [ 14%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/devices/sound.cpp.o[0m
+[1.351s] [ 28%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/turtlebot3.cpp.o[0m
+[1.351s] [ 28%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/odometry.cpp.o[0m
+[1.351s] [ 35%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/devices/reset.cpp.o[0m
+[1.351s] [ 42%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/sensors/battery_state.cpp.o[0m
+[1.351s] [ 50%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/devices/motor_power.cpp.o[0m
+[1.354s] [ 57%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/dynamixel_sdk_wrapper.cpp.o[0m
+[1.366s] [ 64%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/sensors/imu.cpp.o[0m
+[1.371s] [ 71%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/sensors/sensor_state.cpp.o[0m
+[1.376s] [ 78%] [32mBuilding CXX object CMakeFiles/turtlebot3_node_lib.dir/src/sensors/joint_state.cpp.o[0m
+[15.233s] [ 85%] [32m[1mLinking CXX static library libturtlebot3_node_lib.a[0m
+[15.621s] [ 85%] Built target turtlebot3_node_lib
+[15.638s] [ 92%] [32mBuilding CXX object CMakeFiles/turtlebot3_ros.dir/src/node_main.cpp.o[0m
+[17.603s] [100%] [32m[1mLinking CXX executable turtlebot3_ros[0m
+[18.698s] [100%] Built target turtlebot3_ros
+[18.707s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pranav/turtle_test/build/turtlebot3_node -- -j20 -l20
+[18.707s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pranav/turtle_test/build/turtlebot3_node
+[18.712s] -- Install configuration: ""
+[18.712s] -- Execute custom install script
+[18.712s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/param/burger.yaml
+[18.720s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/param/waffle.yaml
+[18.726s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/param/waffle_pi.yaml
+[18.732s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/lib/turtlebot3_node/turtlebot3_ros
+[18.738s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/ament_index/resource_index/package_run_dependencies/turtlebot3_node
+[18.745s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/ament_index/resource_index/parent_prefix_path/turtlebot3_node
+[18.750s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/environment/ament_prefix_path.sh
+[18.755s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/environment/ament_prefix_path.dsv
+[18.762s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/environment/path.sh
+[18.768s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/environment/path.dsv
+[18.773s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/local_setup.bash
+[18.780s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/local_setup.sh
+[18.789s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/local_setup.zsh
+[18.797s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/local_setup.dsv
+[18.805s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/package.dsv
+[18.814s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/ament_index/resource_index/packages/turtlebot3_node
+[18.823s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/cmake/ament_cmake_export_dependencies-extras.cmake
+[18.829s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/cmake/ament_cmake_export_include_directories-extras.cmake
+[18.833s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/cmake/turtlebot3_nodeConfig.cmake
+[18.840s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/cmake/turtlebot3_nodeConfig-version.cmake
+[18.847s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_node/share/turtlebot3_node/package.xml
+[18.856s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/dynamixel_sdk:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/home/pranav/turtle_test/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pranav/turtle_test/build/turtlebot3_node

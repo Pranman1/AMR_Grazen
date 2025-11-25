@@ -1,0 +1,7 @@
+[console_scripts]
+file_navigator = grazen_project.file_navigator:main
+moving_obstacle = grazen_project.moving_obstacle:main
+relative_navigator = grazen_project.relative_navigator:main
+universal_navigator = grazen_project.universal_navigator:main
+waypoint_navigator = grazen_project.waypoint_navigator:main
+

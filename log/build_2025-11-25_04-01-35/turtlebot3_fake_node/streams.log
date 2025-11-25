@@ -1,0 +1,75 @@
+[0.247s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_fake_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/pranav/turtle_test/src/turtlebot3_simulations/turtlebot3_fake_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/turtlebot3_fake_node
+[0.310s] -- The C compiler identification is GNU 11.4.0
+[0.377s] -- The CXX compiler identification is GNU 11.4.0
+[0.385s] -- Detecting C compiler ABI info
+[0.446s] -- Detecting C compiler ABI info - done
+[0.456s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.456s] -- Detecting C compile features
+[0.456s] -- Detecting C compile features - done
+[0.460s] -- Detecting CXX compiler ABI info
+[0.548s] -- Detecting CXX compiler ABI info - done
+[0.559s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.559s] -- Detecting CXX compile features
+[0.559s] -- Detecting CXX compile features - done
+[0.562s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.759s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.844s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.880s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.931s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.938s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.950s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.963s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.979s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.027s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.041s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[1.073s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.076s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.147s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.182s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.233s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.244s] -- Looking for pthread.h
+[1.326s] -- Looking for pthread.h - found
+[1.326s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.418s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.419s] -- Found Threads: TRUE  
+[1.474s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.502s] -- Found tf2: 0.25.16 (/opt/ros/humble/share/tf2/cmake)
+[1.518s] -- Found tf2_msgs: 0.25.16 (/opt/ros/humble/share/tf2_msgs/cmake)
+[1.580s] -- Found turtlebot3_msgs: 2.4.0 (/home/pranav/turtle_test/install/turtlebot3_msgs/share/turtlebot3_msgs/cmake)
+[1.850s] -- Configuring done
+[1.886s] -- Generating done
+[1.897s] -- Build files have been written to: /home/pranav/turtle_test/build/turtlebot3_fake_node
+[1.940s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_fake_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/pranav/turtle_test/src/turtlebot3_simulations/turtlebot3_fake_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/turtlebot3_fake_node
+[1.940s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_fake_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pranav/turtle_test/build/turtlebot3_fake_node -- -j20 -l20
+[2.072s] [ 50%] [32mBuilding CXX object CMakeFiles/turtlebot3_fake_node.dir/src/turtlebot3_fake_node.cpp.o[0m
+[11.826s] [100%] [32m[1mLinking CXX executable turtlebot3_fake_node[0m
+[12.179s] [100%] Built target turtlebot3_fake_node
+[12.189s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_fake_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pranav/turtle_test/build/turtlebot3_fake_node -- -j20 -l20
+[12.191s] Invoking command in '/home/pranav/turtle_test/build/turtlebot3_fake_node': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pranav/turtle_test/build/turtlebot3_fake_node
+[12.196s] -- Install configuration: ""
+[12.196s] -- Execute custom install script
+[12.196s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/lib/turtlebot3_fake_node/turtlebot3_fake_node
+[12.204s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/launch/rviz2.launch.py
+[12.213s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/launch/turtlebot3_fake_node.launch.py
+[12.226s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/param/burger.yaml
+[12.234s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/param/waffle.yaml
+[12.241s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/param/waffle_pi.yaml
+[12.248s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/include//turtlebot3_fake_node/turtlebot3_fake_node.hpp
+[12.256s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/ament_index/resource_index/package_run_dependencies/turtlebot3_fake_node
+[12.262s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/ament_index/resource_index/parent_prefix_path/turtlebot3_fake_node
+[12.270s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/environment/ament_prefix_path.sh
+[12.276s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/environment/ament_prefix_path.dsv
+[12.284s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/environment/path.sh
+[12.291s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/environment/path.dsv
+[12.298s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/local_setup.bash
+[12.304s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/local_setup.sh
+[12.311s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/local_setup.zsh
+[12.318s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/local_setup.dsv
+[12.324s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/package.dsv
+[12.330s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/ament_index/resource_index/packages/turtlebot3_fake_node
+[12.338s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/cmake/ament_cmake_export_include_directories-extras.cmake
+[12.344s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/cmake/ament_cmake_export_dependencies-extras.cmake
+[12.350s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/cmake/turtlebot3_fake_nodeConfig.cmake
+[12.356s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/cmake/turtlebot3_fake_nodeConfig-version.cmake
+[12.363s] -- Symlinking: /home/pranav/turtle_test/install/turtlebot3_fake_node/share/turtlebot3_fake_node/package.xml
+[12.371s] Invoked command in '/home/pranav/turtle_test/build/turtlebot3_fake_node' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pranav/turtle_test/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/pranav/hsl-install/lib PYTHONPATH=/home/pranav/turtle_test/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pranav/turtle_test/build/turtlebot3_fake_node

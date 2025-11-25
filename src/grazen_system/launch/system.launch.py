@@ -20,8 +20,6 @@ def generate_launch_description():
     mode_arg = DeclareLaunchArgument('mode', default_value='sim', description='sim or real')
     task_arg = DeclareLaunchArgument('task', default_value='nav', description='nav or map')
     auto_map_arg = DeclareLaunchArgument('auto_map', default_value='true', description='true=Explore Lite, false=Manual Mapper')
-    
-    # NEW: World Toggle Argument
     sim_world_arg = DeclareLaunchArgument('sim_world', default_value='warehouse', description='warehouse or arena')
     map_name_arg = DeclareLaunchArgument('map_name', default_value='', description='Override map name')
     
@@ -31,7 +29,8 @@ def generate_launch_description():
     sim_world = LaunchConfiguration('sim_world')
     map_name_input = LaunchConfiguration('map_name')
     
-    # --- DYNAMIC MAP NAME LOGIC ---
+    # --- DYNAMIC MAP NAME LOGIC (Cleaned) ---
+    # Result is a string like 'arena_map'
     final_map_name = PythonExpression([
         "'", map_name_input, "' if '", map_name_input, "' != '' else '", sim_world, "_map'"
     ])
@@ -41,8 +40,8 @@ def generate_launch_description():
     explore_params = PathJoinSubstitution([pkg_grazen, 'config', 'explore_params.yaml'])
     slam_params = PathJoinSubstitution([pkg_grazen, 'config', 'slam_params.yaml'])
     
-    # Map file path (Points to install/grazen_system/share/grazen_system/maps/[name].yaml)
-    map_file_install = PathJoinSubstitution([pkg_grazen, 'maps', final_map_name])
+    # Map file path (Points to install/grazen_system/share/grazen_system/maps/[name])
+    map_base_path = PathJoinSubstitution([pkg_grazen, 'maps', final_map_name])
     
     # RViz Config
     rviz_config = os.path.join(pkg_tb3_nav, 'rviz', 'tb3_navigation2.rviz')
@@ -141,7 +140,7 @@ def generate_launch_description():
         output='screen',
         prefix='xterm -e', # Opens in new window
         parameters=[{
-            'map_path': PathJoinSubstitution([pkg_grazen, 'maps', final_map_name]) # Points to INSTALL path
+            'map_path': PathJoinSubstitution([map_base_path]) # <--- PASSES BASE NAME
         }],
         condition=IfCondition(PythonExpression(["'", task, "' == 'map' and '", auto_map, "' == 'false'"]))
     )
@@ -150,11 +149,13 @@ def generate_launch_description():
     # 4. NAVIGATION MODE (Task = 'nav')
     # ========================================================================
     
+    # FIX: Nav Mission now constructs the map path correctly
     nav2_mission = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(pkg_tb3_nav, 'launch', 'navigation2.launch.py')),
         launch_arguments={
             'use_sim_time': PythonExpression(["'", mode, "' == 'sim'"]),
-            'map': PythonExpression([map_file_install, '.yaml']), # Map file is already correct
+            # The Nav2 mission needs the full path WITH the .yaml extension
+            'map': PathJoinSubstitution([map_base_path, '.yaml']), 
             'params_file': nav_params,
             'use_rviz': 'False' # Disable double RViz
         }.items(),

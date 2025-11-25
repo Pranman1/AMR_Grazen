@@ -1,0 +1,1 @@
+/home/pranav/turtle_test/build/aws_robomaker_small_warehouse_world/ament_cmake_environment_hooks/local_setup.bash

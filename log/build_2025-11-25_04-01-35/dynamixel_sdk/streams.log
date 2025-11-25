@@ -1,0 +1,131 @@
+[0.025s] Invoking command in '/home/pranav/turtle_test/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/DynamixelSDK/ros/dynamixel_sdk -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/dynamixel_sdk
+[0.639s] -- The C compiler identification is GNU 11.4.0
+[0.639s] -- The CXX compiler identification is GNU 11.4.0
+[0.639s] -- Detecting C compiler ABI info
+[0.639s] -- Detecting C compiler ABI info - done
+[0.639s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.639s] -- Detecting C compile features
+[0.639s] -- Detecting C compile features - done
+[0.639s] -- Detecting CXX compiler ABI info
+[0.639s] -- Detecting CXX compiler ABI info - done
+[0.639s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.639s] -- Detecting CXX compile features
+[0.639s] -- Detecting CXX compile features - done
+[0.640s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.640s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.640s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.640s] -- Configuring done
+[0.640s] -- Generating done
+[0.640s] -- Build files have been written to: /home/pranav/turtle_test/build/dynamixel_sdk
+[0.654s] Invoked command in '/home/pranav/turtle_test/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/DynamixelSDK/ros/dynamixel_sdk -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/dynamixel_sdk
+[0.655s] Invoking command in '/home/pranav/turtle_test/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/dynamixel_sdk -- -j20 -l20
+[0.686s] [  7%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/protocol1_packet_handler.cpp.o[0m
+[0.687s] [ 15%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/protocol2_packet_handler.cpp.o[0m
+[0.687s] [ 38%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/packet_handler.cpp.o[0m
+[0.687s] [ 38%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_bulk_write.cpp.o[0m
+[0.687s] [ 46%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_sync_read.cpp.o[0m
+[0.688s] [ 53%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_bulk_read.cpp.o[0m
+[0.688s] [ 38%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_sync_write.cpp.o[0m
+[0.690s] [ 61%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_fast_sync_read.cpp.o[0m
+[0.709s] [ 69%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_fast_bulk_read.cpp.o[0m
+[0.709s] [ 76%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_handler.cpp.o[0m
+[0.709s] [ 84%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/port_handler_linux.cpp.o[0m
+[0.709s] [ 92%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/port_handler.cpp.o[0m
+[0.710s] [ 92%] Built target ament_cmake_python_symlink_dynamixel_sdk
+[1.052s] running egg_info
+[1.054s] creating dynamixel_sdk.egg-info
+[1.054s] writing dynamixel_sdk.egg-info/PKG-INFO
+[1.054s] writing dependency_links to dynamixel_sdk.egg-info/dependency_links.txt
+[1.054s] writing top-level names to dynamixel_sdk.egg-info/top_level.txt
+[1.054s] writing manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[1.055s] reading manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[1.060s] writing manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[1.087s] [ 92%] Built target ament_cmake_python_build_dynamixel_sdk_egg
+[1.265s] [100%] [32m[1mLinking CXX shared library libdynamixel_sdk.so[0m
+[1.331s] [100%] Built target dynamixel_sdk
+[1.341s] Invoked command in '/home/pranav/turtle_test/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/dynamixel_sdk -- -j20 -l20
+[1.342s] Invoking command in '/home/pranav/turtle_test/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/dynamixel_sdk
+[1.346s] -- Install configuration: ""
+[1.347s] -- Execute custom install script
+[1.347s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/dynamixel_sdk.h
+[1.353s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_bulk_read.h
+[1.359s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_bulk_write.h
+[1.365s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_fast_bulk_read.h
+[1.372s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_fast_sync_read.h
+[1.378s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_handler.h
+[1.384s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_sync_read.h
+[1.390s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/group_sync_write.h
+[1.396s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/packet_handler.h
+[1.402s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/port_handler.h
+[1.408s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_arduino.h
+[1.417s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_linux.h
+[1.426s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_mac.h
+[1.435s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_windows.h
+[1.444s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/protocol1_packet_handler.h
+[1.450s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/include//dynamixel_sdk/protocol2_packet_handler.h
+[1.457s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/pythonpath.sh
+[1.467s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/pythonpath.dsv
+[1.474s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk-3.8.4-py3.10.egg-info/PKG-INFO
+[1.480s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk-3.8.4-py3.10.egg-info/SOURCES.txt
+[1.486s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk-3.8.4-py3.10.egg-info/dependency_links.txt
+[1.494s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk-3.8.4-py3.10.egg-info/top_level.txt
+[1.500s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/__init__.py
+[1.506s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_read.cpp
+[1.512s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_read.py
+[1.519s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_write.cpp
+[1.525s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_write.py
+[1.532s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_fast_bulk_read.cpp
+[1.540s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_fast_sync_read.cpp
+[1.546s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_handler.cpp
+[1.552s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_read.cpp
+[1.558s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_read.py
+[1.568s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_write.cpp
+[1.576s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_write.py
+[1.583s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/packet_handler.cpp
+[1.589s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/packet_handler.py
+[1.596s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler.cpp
+[1.603s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler.py
+[1.609s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler_arduino.cpp
+[1.616s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler_linux.cpp
+[1.624s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler_mac.cpp
+[1.630s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler_windows.cpp
+[1.639s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol1_packet_handler.cpp
+[1.648s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol1_packet_handler.py
+[1.654s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol2_packet_handler.cpp
+[1.659s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol2_packet_handler.py
+[1.665s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/robotis_def.py
+[1.670s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/library_path.sh
+[1.675s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/library_path.dsv
+[1.683s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/ament_index/resource_index/package_run_dependencies/dynamixel_sdk
+[1.691s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/ament_index/resource_index/parent_prefix_path/dynamixel_sdk
+[1.697s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/ament_prefix_path.sh
+[1.703s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/ament_prefix_path.dsv
+[1.709s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/path.sh
+[1.715s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/environment/path.dsv
+[1.721s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.bash
+[1.728s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.sh
+[1.735s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.zsh
+[1.743s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.dsv
+[1.750s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/package.dsv
+[1.757s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/ament_index/resource_index/packages/dynamixel_sdk
+[1.764s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_targets-extras.cmake
+[1.771s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.781s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_libraries-extras.cmake
+[1.790s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkConfig.cmake
+[1.799s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkConfig-version.cmake
+[1.809s] -- Symlinking: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/package.xml
+[1.818s] -- Installing: /home/pranav/turtle_test/install/dynamixel_sdk/lib/libdynamixel_sdk.so
+[1.856s] Listing '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/__init__.py'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_read.py'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_bulk_write.py'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_read.py'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/group_sync_write.py'...
+[1.856s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/packet_handler.py'...
+[1.857s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/port_handler.py'...
+[1.857s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol1_packet_handler.py'...
+[1.857s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/protocol2_packet_handler.py'...
+[1.857s] Compiling '/home/pranav/turtle_test/install/dynamixel_sdk/local/lib/python3.10/dist-packages/dynamixel_sdk/robotis_def.py'...
+[1.860s] -- Installing: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkExport.cmake
+[1.861s] -- Installing: /home/pranav/turtle_test/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkExport-noconfig.cmake
+[1.864s] Invoked command in '/home/pranav/turtle_test/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/dynamixel_sdk
