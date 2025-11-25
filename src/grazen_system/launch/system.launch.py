@@ -88,13 +88,14 @@ def generate_launch_description():
     # ========================================================================
     # 2. VISUALIZATION LAYER (RViz)
     # ========================================================================
+    # Only launch RViz in mapping mode; nav2_mission handles its own RViz in nav mode
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         arguments=['-d', rviz_config],
         output='screen',
-        condition=IfCondition(PythonExpression(["'", mode, "' == 'sim'"]))
+        condition=IfCondition(PythonExpression(["'", mode, "' == 'sim' and '", task, "' == 'map'"]))
     )
 
     # ========================================================================
@@ -155,7 +156,7 @@ def generate_launch_description():
         launch_arguments={
             'use_sim_time': PythonExpression(["'", mode, "' == 'sim'"]),
             # The Nav2 mission needs the full path WITH the .yaml extension
-            'map': PathJoinSubstitution([map_base_path, '.yaml']), 
+            'map': [map_base_path, '.yaml'], 
             'params_file': nav_params,
             'use_rviz': 'False' # Disable double RViz
         }.items(),

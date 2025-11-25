@@ -1,0 +1,21 @@
+[1.025s] Invoking command in '/home/pranav/turtle_test/build/grazen_project': PYTHONPATH=/home/pranav/turtle_test/build/grazen_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pranav/turtle_test/build/grazen_project/build --no-deps symlink_data
+[1.207s] running develop
+[1.316s] running egg_info
+[1.316s] writing grazen_project.egg-info/PKG-INFO
+[1.316s] writing dependency_links to grazen_project.egg-info/dependency_links.txt
+[1.316s] writing entry points to grazen_project.egg-info/entry_points.txt
+[1.316s] writing requirements to grazen_project.egg-info/requires.txt
+[1.316s] writing top-level names to grazen_project.egg-info/top_level.txt
+[1.317s] reading manifest file 'grazen_project.egg-info/SOURCES.txt'
+[1.318s] writing manifest file 'grazen_project.egg-info/SOURCES.txt'
+[1.318s] running build_ext
+[1.319s] Creating /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen-project.egg-link (link to .)
+[1.319s] Installing file_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+[1.319s] Installing moving_obstacle script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+[1.319s] Installing relative_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+[1.319s] Installing universal_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+[1.319s] Installing waypoint_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+[1.320s] 
+[1.320s] Installed /home/pranav/turtle_test/build/grazen_project
+[1.320s] running symlink_data
+[1.341s] Invoked command in '/home/pranav/turtle_test/build/grazen_project' returned '0': PYTHONPATH=/home/pranav/turtle_test/build/grazen_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pranav/turtle_test/build/grazen_project/build --no-deps symlink_data

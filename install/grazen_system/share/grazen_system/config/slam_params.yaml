@@ -1,1 +1,32 @@
-/home/pranav/turtle_test/build/grazen_system/config/slam_params.yaml
+slam_toolbox:
+  ros__parameters:
+    use_sim_time: true
+    
+    # Core SLAM params
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_footprint
+    scan_topic: /scan
+    mode: mapping
+    
+    # Update frequently for explore_lite
+    map_update_interval: 1.0        # Update map every 1s (balanced)
+    resolution: 0.05
+    
+    # Movement thresholds - lower = more frequent updates
+    minimum_travel_distance: 0.2    # Update every 20cm moved
+    minimum_travel_heading: 0.2     # Update every 0.2 rad turned
+    minimum_time_interval: 0.5
+    
+    # Scan matching
+    use_scan_matching: true
+    use_scan_barycenter: true
+    
+    # Laser settings
+    max_laser_range: 12.0           # Don't trust laser beyond 12m
+    
+    # Performance
+    transform_timeout: 0.2
+    tf_buffer_duration: 30.0
+    stack_size_to_use: 40000000
+    enable_interactive_mode: true
