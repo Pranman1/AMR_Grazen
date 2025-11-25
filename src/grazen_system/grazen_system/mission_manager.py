@@ -5,6 +5,7 @@ from rclpy.duration import Duration
 from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 from geometry_msgs.msg import PoseStamped
 from tf2_ros import Buffer, TransformListener
+from rclpy.time import Time
 import os
 import time
 
@@ -24,9 +25,9 @@ class MissionManager(Node):
     def is_localized(self):
         """Checks if the map->base_link transform exists (meaning AMCL is working)"""
         try:
-            # Actually try to get the transform (more reliable than can_transform)
-            self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
-            return True
+            # Use Time() to get the latest available transform
+            # 0 seconds means "latest", but we need to be careful with timeouts
+            return self.tf_buffer.can_transform('map', 'base_link', Time(), timeout=Duration(seconds=1.0))
         except Exception:
             return False
 
@@ -55,22 +56,25 @@ class MissionManager(Node):
         return pose
 
     def run(self):
-        # 1. Wait for Nav2
+        # 1. Wait for Nav2 to come online
         self.get_logger().info("Waiting for Nav2 to start...")
         self.navigator.waitUntilNav2Active()
         self.get_logger().info("Nav2 Active.")
 
-        # 2. Wait for Localization (Human click or AMCL convergence)
+        # 2. Wait for Localization
         self.get_logger().info("🛑 WAITING FOR LOCALIZATION...")
         self.get_logger().info("👉 Please use '2D Pose Estimate' in RViz to align the robot.")
         
         while rclpy.ok():
+            # We must spin the node briefly to allow the TF buffer to fill!
+            # This was the MISSING PIECE in previous versions.
+            rclpy.spin_once(self, timeout_sec=0.1)
+            
             if self.is_localized():
                 self.get_logger().info("✅ Robot Localized! Starting Mission...")
                 break
             self.get_logger().info("   Waiting for transform map->base_link...", throttle_duration_sec=2.0)
-            time.sleep(1.0)
-
+            
         # 3. Read Mission
         waypoints = self.read_waypoints()
         if not waypoints:
@@ -78,12 +82,16 @@ class MissionManager(Node):
             return
 
         # 4. Get Anchor Point
+        # We need to spin one more time to ensure we get the fresh transform
+        rclpy.spin_once(self, timeout_sec=0.1)
+        
         try:
-            now = rclpy.time.Time()
-            trans = self.tf_buffer.lookup_transform('map', 'base_link', now)
+            trans = self.tf_buffer.lookup_transform('map', 'base_link', Time())
             start_x = trans.transform.translation.x
             start_y = trans.transform.translation.y
-        except Exception:
+            self.get_logger().info(f"⚓ ANCHOR SET at ({start_x:.2f}, {start_y:.2f})")
+        except Exception as e:
+            self.get_logger().error(f"Failed to get anchor: {e}")
             start_x, start_y = 0.0, 0.0
 
         # 5. Execute

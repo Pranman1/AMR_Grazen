@@ -1,0 +1,24 @@
+running egg_info
+writing ../../build/grazen_system/grazen_system.egg-info/PKG-INFO
+writing dependency_links to ../../build/grazen_system/grazen_system.egg-info/dependency_links.txt
+writing entry points to ../../build/grazen_system/grazen_system.egg-info/entry_points.txt
+writing requirements to ../../build/grazen_system/grazen_system.egg-info/requires.txt
+writing top-level names to ../../build/grazen_system/grazen_system.egg-info/top_level.txt
+reading manifest file '../../build/grazen_system/grazen_system.egg-info/SOURCES.txt'
+writing manifest file '../../build/grazen_system/grazen_system.egg-info/SOURCES.txt'
+running build
+running build_py
+copying grazen_system/mission_manager.py -> /home/pranav/turtle_test/build/grazen_system/build/lib/grazen_system
+running install
+running install_lib
+copying /home/pranav/turtle_test/build/grazen_system/build/lib/grazen_system/mission_manager.py -> /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system
+byte-compiling /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system/mission_manager.py to mission_manager.cpython-310.pyc
+running install_data
+copying launch/system.launch.py -> /home/pranav/turtle_test/install/grazen_system/share/grazen_system/launch
+running install_egg_info
+removing '/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/grazen_system/grazen_system.egg-info to /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system-0.0.0-py3.10.egg-info
+running install_scripts
+Installing manual_mapper script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+Installing mission_manager script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+writing list of installed files to '/home/pranav/turtle_test/build/grazen_system/install.log'

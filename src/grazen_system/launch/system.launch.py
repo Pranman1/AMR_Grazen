@@ -168,7 +168,8 @@ def generate_launch_description():
         executable='mission_manager',
         output='screen',
         parameters=[{
-            'use_sim_time': PythonExpression(["'", mode, "' == 'sim'"]),
+            'mode': mode,
+            'task': task,
             'waypoints_file': PathJoinSubstitution([pkg_grazen, 'config', 'waypoints.txt'])
         }],
         condition=IfCondition(PythonExpression(["'", task, "' == 'nav'"]))
