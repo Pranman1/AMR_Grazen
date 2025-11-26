@@ -29,10 +29,13 @@ def generate_launch_description():
     sim_world = LaunchConfiguration('sim_world')
     map_name_input = LaunchConfiguration('map_name')
     
-    # --- DYNAMIC MAP NAME LOGIC (Cleaned) ---
-    # Result is a string like 'arena_map'
+    # --- DYNAMIC MAP NAME LOGIC ---
+    # If map_name provided: use it
+    # If sim mode: use sim_world_map (arena_map, warehouse_map)
+    # If real mode: use 'real_map' as default
     final_map_name = PythonExpression([
-        "'", map_name_input, "' if '", map_name_input, "' != '' else '", sim_world, "_map'"
+        "'", map_name_input, "' if '", map_name_input, "' != '' else ",
+        "('", sim_world, "_map' if '", mode, "' == 'sim' else 'real_map')"
     ])
 
     # --- PATHS CONSTRUCTION ---
@@ -88,14 +91,14 @@ def generate_launch_description():
     # ========================================================================
     # 2. VISUALIZATION LAYER (RViz)
     # ========================================================================
-    # Only launch RViz in mapping mode; nav2_mission handles its own RViz in nav mode
+    # Launch RViz in mapping mode (sim or real); nav2_mission handles its own RViz in nav mode
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         arguments=['-d', rviz_config],
         output='screen',
-        condition=IfCondition(PythonExpression(["'", mode, "' == 'sim' and '", task, "' == 'map'"]))
+        condition=IfCondition(PythonExpression(["'", task, "' == 'map'"]))
     )
 
     # ========================================================================

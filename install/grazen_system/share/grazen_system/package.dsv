@@ -4,3 +4,6 @@ source;share/grazen_system/hook/pythonpath.sh
 source;share/grazen_system/hook/ament_prefix_path.ps1
 source;share/grazen_system/hook/ament_prefix_path.dsv
 source;share/grazen_system/hook/ament_prefix_path.sh
+source;../../build/grazen_system/share/grazen_system/hook/pythonpath_develop.ps1
+source;../../build/grazen_system/share/grazen_system/hook/pythonpath_develop.dsv
+source;../../build/grazen_system/share/grazen_system/hook/pythonpath_develop.sh

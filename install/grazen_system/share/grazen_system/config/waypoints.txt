@@ -1,5 +1,1 @@
-# N (X)   E (Y)
-0.0       0.0
-2.0       0.0
-2.0       1.0
-0.0       1.0
+/home/pranav/turtle_test/build/grazen_system/config/waypoints.txt

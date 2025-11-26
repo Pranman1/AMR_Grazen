@@ -16,8 +16,12 @@ config/waypoints.txt
 grazen_system/__init__.py
 grazen_system/manual_mapper.py
 grazen_system/mission_manager.py
+grazen_system.egg-info/PKG-INFO
+grazen_system.egg-info/SOURCES.txt
+grazen_system.egg-info/dependency_links.txt
+grazen_system.egg-info/entry_points.txt
+grazen_system.egg-info/requires.txt
+grazen_system.egg-info/top_level.txt
+grazen_system.egg-info/zip-safe
 launch/system.launch.py
 resource/grazen_system
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py
