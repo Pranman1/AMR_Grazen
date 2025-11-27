@@ -81,25 +81,26 @@ class MissionManager(Node):
             self.get_logger().warn("No waypoints found. Mission Aborted.")
             return
 
-        # 4. Get Anchor Point
+        # 4. Get Initial Position
         # We need to spin one more time to ensure we get the fresh transform
         rclpy.spin_once(self, timeout_sec=0.1)
         
         try:
             trans = self.tf_buffer.lookup_transform('map', 'base_link', Time())
-            start_x = trans.transform.translation.x
-            start_y = trans.transform.translation.y
-            self.get_logger().info(f"⚓ ANCHOR SET at ({start_x:.2f}, {start_y:.2f})")
+            current_x = trans.transform.translation.x
+            current_y = trans.transform.translation.y
+            self.get_logger().info(f"⚓ STARTING POSITION: ({current_x:.2f}, {current_y:.2f})")
         except Exception as e:
-            self.get_logger().error(f"Failed to get anchor: {e}")
-            start_x, start_y = 0.0, 0.0
+            self.get_logger().error(f"Failed to get starting position: {e}")
+            current_x, current_y = 0.0, 0.0
 
-        # 5. Execute
+        # 5. Execute Sequential Moves (each waypoint relative to PREVIOUS position)
         for i, (dx, dy) in enumerate(waypoints):
-            target_x = start_x + dx
-            target_y = start_y + dy
+            # Calculate target relative to CURRENT position (not initial anchor)
+            target_x = current_x + dx
+            target_y = current_y + dy
             
-            self.get_logger().info(f"--- Move {i+1}: Go to ({target_x:.2f}, {target_y:.2f}) ---")
+            self.get_logger().info(f"--- Move {i+1}: ({current_x:.2f}, {current_y:.2f}) → ({target_x:.2f}, {target_y:.2f}) [Δx={dx:.2f}, Δy={dy:.2f}] ---")
             
             goal = self.create_pose(target_x, target_y)
             self.navigator.goToPose(goal)
@@ -108,11 +109,16 @@ class MissionManager(Node):
                 pass
 
             if self.navigator.getResult() == TaskResult.SUCCEEDED:
-                self.get_logger().info(f"Move {i+1} Complete!")
+                self.get_logger().info(f"✅ Move {i+1} Complete!")
+                # Update current position for next move (use commanded target, not AMCL estimate)
+                current_x = target_x
+                current_y = target_y
             else:
-                self.get_logger().error(f"Move {i+1} Failed!")
+                self.get_logger().error(f"❌ Move {i+1} Failed!")
+                # On failure, break out (don't continue with wrong position)
+                break
 
-        self.get_logger().info("Mission Complete.")
+        self.get_logger().info("🏁 Mission Complete.")
 
 def main():
     rclpy.init()
