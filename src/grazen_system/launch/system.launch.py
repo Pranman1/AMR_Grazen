@@ -160,6 +160,20 @@ def generate_launch_description():
         parameters=[explore_params, {'use_sim_time': PythonExpression(["'", mode, "' == 'sim'"])}],
         condition=IfCondition(PythonExpression(["'", task, "' == 'map' and '", auto_map, "' == 'true'"]))
     )
+    
+    # C1b. Auto Mapper Monitor (watches explore_lite, saves map when done)
+    auto_mapper = Node(
+        package='grazen_system',
+        executable='auto_mapper',
+        name='auto_mapper',
+        output='screen',
+        parameters=[{
+            'map_path': PathJoinSubstitution([map_base_path]),
+            'completion_timeout': 3.0,  # Seconds with no frontiers = done (3s too aggressive)
+            'save_interval': 60.0        # Backup save every 60s during exploration
+        }],
+        condition=IfCondition(PythonExpression(["'", task, "' == 'map' and '", auto_map, "' == 'true'"]))
+    )
 
     # C2. Manual Mapper (FIXED: Saves to install directory)
     manual_mapper = Node(
@@ -220,6 +234,7 @@ def generate_launch_description():
         slam_toolbox_real,   # SLAM for real mode (uses /scan_filtered)
         nav2_mapping,
         explore_lite,
+        auto_mapper,         # Monitors explore_lite, saves map when done (auto_map mode only)
         manual_mapper,
         nav2_mission,
         mission_manager
