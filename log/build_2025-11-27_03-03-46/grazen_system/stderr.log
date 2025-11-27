@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/home/pranav/turtle_test/build/grazen_system/setup.py", line 6, in <module>
+    setup(
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 153, in setup
+    return distutils.core.setup(**attrs)
+  File "/usr/lib/python3.10/distutils/core.py", line 134, in setup
+    ok = dist.parse_command_line()
+  File "/usr/lib/python3.10/distutils/dist.py", line 483, in parse_command_line
+    args = self._parse_command_opts(parser, args)
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/dist.py", line 1042, in _parse_command_opts
+    nargs = _Distribution._parse_command_opts(self, parser, args)
+  File "/usr/lib/python3.10/distutils/dist.py", line 539, in _parse_command_opts
+    cmd_class = self.get_command_class(command)
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/dist.py", line 887, in get_command_class
+    self.cmdclass[command] = cmdclass = ep.load()
+  File "/home/pranav/.local/lib/python3.10/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/home/pranav/.local/lib/python3.10/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/command/develop.py", line 9, in <module>
+    from setuptools.command.easy_install import easy_install
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/command/easy_install.py", line 49, in <module>
+    from setuptools.sandbox import run_setup
+  File "/home/pranav/.local/lib/python3.10/site-packages/setuptools/sandbox.py", line 9, in <module>
+    import pickle
+  File "/usr/lib/python3.10/pickle.py", line 37, in <module>
+    import _compat_pickle
+  File "/usr/lib/python3.10/_compat_pickle.py", line 244, in <module>
+    REVERSE_NAME_MAPPING[('builtins', excname)] = ('exceptions', 'OSError')
+KeyboardInterrupt

@@ -169,8 +169,8 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'map_path': PathJoinSubstitution([map_base_path]),
-            'completion_timeout': 3.0,  # Seconds with no frontiers = done (3s too aggressive)
-            'save_interval': 60.0        # Backup save every 60s during exploration
+            'completion_timeout': 10.0,  # Seconds with no frontiers = done
+            'save_interval': 0.0         # Disabled backup saves (0 = off)
         }],
         condition=IfCondition(PythonExpression(["'", task, "' == 'map' and '", auto_map, "' == 'true'"]))
     )

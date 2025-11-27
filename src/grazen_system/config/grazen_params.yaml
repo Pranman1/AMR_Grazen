@@ -105,11 +105,11 @@ controller_server:
       debug_trajectory_details: true
       min_vel_x: 0.0
       min_vel_y: 0.0
-      max_vel_x: 0.35         
+      max_vel_x: 0.20          # Reduced for safer exploration (was 0.35)
       max_vel_y: 0.0
-      max_vel_theta: 1.0
+      max_vel_theta: 0.8       # Reduced rotation speed (was 1.0)
       min_speed_xy: 0.0
-      max_speed_xy: 0.35      
+      max_speed_xy: 0.20       # Reduced for safer exploration (was 0.35)      
       min_speed_theta: 0.0
       acc_lim_x: 3.5          
       acc_lim_y: 0.0
@@ -158,7 +158,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 2.0
-        inflation_radius: 0.20  # Balanced: tight paths but safe from crashes 
+        inflation_radius: 0.20  # Increased for better obstacle avoidance 
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: true
