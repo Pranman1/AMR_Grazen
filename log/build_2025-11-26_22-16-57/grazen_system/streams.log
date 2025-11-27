@@ -1,0 +1,19 @@
+[0.801s] Invoking command in '/home/pranav/turtle_test/build/grazen_system': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world PYTHONPATH=/home/pranav/turtle_test/build/grazen_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pranav/turtle_test/build/grazen_system/build --no-deps symlink_data
+[1.090s] running develop
+[1.262s] running egg_info
+[1.262s] writing grazen_system.egg-info/PKG-INFO
+[1.263s] writing dependency_links to grazen_system.egg-info/dependency_links.txt
+[1.263s] writing entry points to grazen_system.egg-info/entry_points.txt
+[1.263s] writing requirements to grazen_system.egg-info/requires.txt
+[1.263s] writing top-level names to grazen_system.egg-info/top_level.txt
+[1.265s] reading manifest file 'grazen_system.egg-info/SOURCES.txt'
+[1.271s] writing manifest file 'grazen_system.egg-info/SOURCES.txt'
+[1.273s] running build_ext
+[1.273s] Creating /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen-system.egg-link (link to .)
+[1.274s] Installing manual_mapper script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[1.274s] Installing mission_manager script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[1.274s] Installing scan_resampler script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[1.275s] 
+[1.275s] Installed /home/pranav/turtle_test/build/grazen_system
+[1.275s] running symlink_data
+[1.307s] Invoked command in '/home/pranav/turtle_test/build/grazen_system' returned '0': AMENT_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world PYTHONPATH=/home/pranav/turtle_test/build/grazen_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pranav/turtle_test/build/grazen_system/build --no-deps symlink_data

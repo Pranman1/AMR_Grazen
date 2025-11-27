@@ -105,14 +105,39 @@ def generate_launch_description():
     # 3. MAPPING MODE (Task = 'map')
     # ========================================================================
     
-    # A. SLAM Toolbox
-    slam_toolbox = Node(
+    # FIX: Laser Scan Resampler (Real Robot Only)
+    # Problem: Real LDS-02 produces 250-256 readings/scan (variable due to motor timing)
+    #          SLAM Toolbox locks to first scan count, rejects mismatches → intermittent mapping
+    # Solution: Resample all scans to fixed 360 readings via linear interpolation
+    #          Input: /scan (variable) → Output: /scan_filtered (constant 360)
+    # Impact: Sim unaffected (already has constant scans, this node won't run)
+    scan_resampler = Node(
+        package='grazen_system',
+        executable='scan_resampler',
+        name='scan_resampler',
+        output='screen',
+        condition=IfCondition(PythonExpression(["'", mode, "' == 'real' and '", task, "' == 'map'"]))
+    )
+    
+    # A. SLAM Toolbox - SIM MODE (uses raw /scan with constant 360 readings)
+    slam_toolbox_sim = Node(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
         name='slam_toolbox',
         output='screen',
-        parameters=[slam_params, {'use_sim_time': PythonExpression(["'", mode, "' == 'sim'"])}],
-        condition=IfCondition(PythonExpression(["'", task, "' == 'map'"]))
+        parameters=[slam_params, {'use_sim_time': True}],
+        condition=IfCondition(PythonExpression(["'", mode, "' == 'sim' and '", task, "' == 'map'"]))
+    )
+    
+    # A. SLAM Toolbox - REAL MODE (uses /scan_filtered with resampled 360 readings)
+    slam_toolbox_real = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam_toolbox',
+        output='screen',
+        parameters=[slam_params, {'use_sim_time': False}],
+        remappings=[('scan', 'scan_filtered')],  # ✅ Simple string remapping (no PythonExpression)
+        condition=IfCondition(PythonExpression(["'", mode, "' == 'real' and '", task, "' == 'map'"]))
     )
 
     # B. Nav2 (Mapping Config - NO AMCL)
@@ -190,7 +215,9 @@ def generate_launch_description():
         robot_state_publisher,
         robot_spawn_launch,
         rviz_node,
-        slam_toolbox,
+        scan_resampler,      # Resample variable scans to fixed 360 (real mode only)
+        slam_toolbox_sim,    # SLAM for sim mode (uses /scan)
+        slam_toolbox_real,   # SLAM for real mode (uses /scan_filtered)
         nav2_mapping,
         explore_lite,
         manual_mapper,

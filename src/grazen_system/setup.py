@@ -30,6 +30,7 @@ setup(
         'console_scripts': [
             'mission_manager = grazen_system.mission_manager:main',
             'manual_mapper = grazen_system.manual_mapper:main',
+            'scan_resampler = grazen_system.scan_resampler:main',
         ],
     },
 )

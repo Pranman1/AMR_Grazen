@@ -1,0 +1,55 @@
+[0.000000] (-) TimerEvent: {}
+[0.000169] (-) JobUnselected: {'identifier': 'aws_robomaker_small_warehouse_world'}
+[0.000570] (-) JobUnselected: {'identifier': 'dynamixel_sdk'}
+[0.000659] (-) JobUnselected: {'identifier': 'dynamixel_sdk_custom_interfaces'}
+[0.000683] (-) JobUnselected: {'identifier': 'dynamixel_sdk_examples'}
+[0.000713] (-) JobUnselected: {'identifier': 'explore_lite'}
+[0.000733] (-) JobUnselected: {'identifier': 'grazen_project'}
+[0.000913] (-) JobUnselected: {'identifier': 'multirobot_map_merge'}
+[0.000942] (-) JobUnselected: {'identifier': 'turtlebot3'}
+[0.000960] (-) JobUnselected: {'identifier': 'turtlebot3_bringup'}
+[0.000978] (-) JobUnselected: {'identifier': 'turtlebot3_cartographer'}
+[0.001087] (-) JobUnselected: {'identifier': 'turtlebot3_description'}
+[0.001113] (-) JobUnselected: {'identifier': 'turtlebot3_example'}
+[0.001132] (-) JobUnselected: {'identifier': 'turtlebot3_fake_node'}
+[0.001152] (-) JobUnselected: {'identifier': 'turtlebot3_gazebo'}
+[0.001171] (-) JobUnselected: {'identifier': 'turtlebot3_manipulation_gazebo'}
+[0.001371] (-) JobUnselected: {'identifier': 'turtlebot3_msgs'}
+[0.001431] (-) JobUnselected: {'identifier': 'turtlebot3_navigation2'}
+[0.001455] (-) JobUnselected: {'identifier': 'turtlebot3_node'}
+[0.001484] (-) JobUnselected: {'identifier': 'turtlebot3_simulations'}
+[0.001507] (-) JobUnselected: {'identifier': 'turtlebot3_teleop'}
+[0.001532] (grazen_system) JobQueued: {'identifier': 'grazen_system', 'dependencies': OrderedDict([('aws_robomaker_small_warehouse_world', '/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world'), ('explore_lite', '/home/pranav/turtle_test/install/explore_lite'), ('turtlebot3_cartographer', '/home/pranav/turtle_test/install/turtlebot3_cartographer'), ('turtlebot3_gazebo', '/home/pranav/turtle_test/install/turtlebot3_gazebo'), ('turtlebot3_navigation2', '/home/pranav/turtle_test/install/turtlebot3_navigation2')])}
+[0.001573] (grazen_system) JobStarted: {'identifier': 'grazen_system'}
+[0.099967] (-) TimerEvent: {}
+[0.200307] (-) TimerEvent: {}
+[0.301000] (-) TimerEvent: {}
+[0.401751] (-) TimerEvent: {}
+[0.502057] (-) TimerEvent: {}
+[0.602415] (-) TimerEvent: {}
+[0.671909] (grazen_system) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/pranav/turtle_test/build/grazen_system/build', '--no-deps', 'symlink_data'], 'cwd': '/home/pranav/turtle_test/build/grazen_system', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/home/pranav', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'USER': 'pranav', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/usr/share/cursor/resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins::/home/pranav/hsl-install/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins::/home/pranav/hsl-install/lib', 'HOME': '/home/pranav', 'CHROME_DESKTOP': 'cursor.desktop', 'OLDPWD': '/home/pranav/turtle_test', 'DESKTOP_SESSION': 'ubuntu', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-b3d86fb7-2.0.-main.sock', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/cursor.desktop', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1758', 'SYSTEMD_EXEC_PID': '2264', 'IM_CONFIG_CHECK_ENV': '1', 'NO_COLOR': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '5077', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'VSCODE_L10N_BUNDLE_LOCATION': '', 'ROS_DISTRO': 'humble', 'LOGNAME': 'pranav', 'FORCE_COLOR': '0', 'JOURNAL_STREAM': '8:11855', 'EUFS_MASTER': '/home/pranav/workspace/FEB/FEB_AUTO/feb-system-integration', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'pranav', 'TERM': 'dumb', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo-11/models:/usr/share/gazebo-11/models::/home/pranav/turtle_test/src/aws-robomaker-small-warehouse-world/models:/home/pranav/turtle_test/src/aws-robomaker-small-warehouse-world/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'COMPOSER_NO_INTERACTION': '1', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/home/pranav/.local/bin:/home/pranav/.local/bin:/opt/ros/humble/bin:/home/pranav/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/pranav-XPS-15-9520:@/tmp/.ICE-unix/2232,unix/pranav-XPS-15-9520:/tmp/.ICE-unix/2232', 'INVOCATION_ID': 'f51b53f816874bd7bb4c7eb16abf8d14', 'XDG_MENU_PREFIX': 'gnome-', 'VSCODE_PROCESS_TITLE': 'extension-host  [1-1]', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'CURSOR_AGENT': '1', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.UFZJG3', 'LS_COLORS': '', 'CURSOR_TRACE_ID': '1279f1248b4446a4b712cb6a7ff632d6', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world:/opt/ros/humble', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo-11:/usr/share/gazebo-11:', 'GJS_DEBUG_OUTPUT': 'stderr', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/pranav/turtle_test/build/grazen_system', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'VSCODE_CODE_CACHE_PATH': '/home/pranav/.config/Cursor/CachedData/63fcac100bd5d5749f2a98aa47d65f6eca61db30', 'GAZEBO_PLUGIN_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pranav/turtle_test/build/grazen_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'OMP_NUM_THREADS': '20', 'COLCON': '1', 'VSCODE_PID': '5077', 'CMAKE_PREFIX_PATH': '/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world'}, 'shell': False}
+[0.702502] (-) TimerEvent: {}
+[0.802804] (-) TimerEvent: {}
+[0.903037] (-) TimerEvent: {}
+[0.940734] (grazen_system) StdoutLine: {'line': b'running develop\n'}
+[1.003339] (-) TimerEvent: {}
+[1.097195] (grazen_system) StdoutLine: {'line': b'running egg_info\n'}
+[1.097711] (grazen_system) StdoutLine: {'line': b'writing grazen_system.egg-info/PKG-INFO\n'}
+[1.097784] (grazen_system) StdoutLine: {'line': b'writing dependency_links to grazen_system.egg-info/dependency_links.txt\n'}
+[1.097822] (grazen_system) StdoutLine: {'line': b'writing entry points to grazen_system.egg-info/entry_points.txt\n'}
+[1.098042] (grazen_system) StdoutLine: {'line': b'writing requirements to grazen_system.egg-info/requires.txt\n'}
+[1.098119] (grazen_system) StdoutLine: {'line': b'writing top-level names to grazen_system.egg-info/top_level.txt\n'}
+[1.099411] (grazen_system) StdoutLine: {'line': b"reading manifest file 'grazen_system.egg-info/SOURCES.txt'\n"}
+[1.100068] (grazen_system) StdoutLine: {'line': b"writing manifest file 'grazen_system.egg-info/SOURCES.txt'\n"}
+[1.101081] (grazen_system) StdoutLine: {'line': b'running build_ext\n'}
+[1.101187] (grazen_system) StdoutLine: {'line': b'Creating /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen-system.egg-link (link to .)\n'}
+[1.101793] (grazen_system) StdoutLine: {'line': b'Installing manual_mapper script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system\n'}
+[1.101911] (grazen_system) StdoutLine: {'line': b'Installing mission_manager script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system\n'}
+[1.101961] (grazen_system) StdoutLine: {'line': b'Installing scan_resampler script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system\n'}
+[1.102365] (grazen_system) StdoutLine: {'line': b'\n'}
+[1.102520] (grazen_system) StdoutLine: {'line': b'Installed /home/pranav/turtle_test/build/grazen_system\n'}
+[1.102608] (grazen_system) StdoutLine: {'line': b'running symlink_data\n'}
+[1.103433] (-) TimerEvent: {}
+[1.133812] (grazen_system) CommandEnded: {'returncode': 0}
+[1.146704] (grazen_system) JobEnded: {'identifier': 'grazen_system', 'rc': 0}
+[1.147684] (-) EventReactorShutdown: {}

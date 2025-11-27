@@ -1,4 +1,5 @@
 [console_scripts]
 manual_mapper = grazen_system.manual_mapper:main
 mission_manager = grazen_system.mission_manager:main
+scan_resampler = grazen_system.scan_resampler:main
 
