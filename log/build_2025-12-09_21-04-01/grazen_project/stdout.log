@@ -1,0 +1,50 @@
+running develop
+Removing /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen-project.egg-link (link to .)
+running egg_info
+writing ../../build/grazen_project/grazen_project.egg-info/PKG-INFO
+writing dependency_links to ../../build/grazen_project/grazen_project.egg-info/dependency_links.txt
+writing entry points to ../../build/grazen_project/grazen_project.egg-info/entry_points.txt
+writing requirements to ../../build/grazen_project/grazen_project.egg-info/requires.txt
+writing top-level names to ../../build/grazen_project/grazen_project.egg-info/top_level.txt
+reading manifest file '../../build/grazen_project/grazen_project.egg-info/SOURCES.txt'
+writing manifest file '../../build/grazen_project/grazen_project.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/pranav/turtle_test/build/grazen_project/build
+creating /home/pranav/turtle_test/build/grazen_project/build/lib
+creating /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/moving_obstacle.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/waypoint_navigator.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/__init__.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/file_navigator.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/universal_navigator.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+copying grazen_project/relative_navigator.py -> /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project
+running install
+running install_lib
+creating /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/moving_obstacle.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/waypoint_navigator.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/__init__.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/file_navigator.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/universal_navigator.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+copying /home/pranav/turtle_test/build/grazen_project/build/lib/grazen_project/relative_navigator.py -> /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/moving_obstacle.py to moving_obstacle.cpython-310.pyc
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/waypoint_navigator.py to waypoint_navigator.cpython-310.pyc
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/file_navigator.py to file_navigator.cpython-310.pyc
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/universal_navigator.py to universal_navigator.cpython-310.pyc
+byte-compiling /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project/relative_navigator.py to relative_navigator.cpython-310.pyc
+running install_data
+copying resource/grazen_project -> /home/pranav/turtle_test/install/grazen_project/share/ament_index/resource_index/packages
+copying package.xml -> /home/pranav/turtle_test/install/grazen_project/share/grazen_project
+copying launch/start_warehouse.launch.py -> /home/pranav/turtle_test/install/grazen_project/share/grazen_project/launch
+copying config/nav2_params.yaml -> /home/pranav/turtle_test/install/grazen_project/share/grazen_project/config
+running install_egg_info
+Copying ../../build/grazen_project/grazen_project.egg-info to /home/pranav/turtle_test/install/grazen_project/lib/python3.10/site-packages/grazen_project-0.0.0-py3.10.egg-info
+running install_scripts
+Installing file_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+Installing moving_obstacle script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+Installing relative_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+Installing universal_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+Installing waypoint_navigator script to /home/pranav/turtle_test/install/grazen_project/lib/grazen_project
+writing list of installed files to '/home/pranav/turtle_test/build/grazen_project/install.log'

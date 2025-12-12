@@ -1,0 +1,76 @@
+[0.028s] Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/explore -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/explore_lite
+[0.467s] -- BuilD for ROS2: humble
+[0.467s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.467s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.467s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[0.467s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.467s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.467s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.467s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.467s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.467s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.467s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.467s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.468s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.468s] -- Found tf2_ros: 0.25.16 (/opt/ros/humble/share/tf2_ros/cmake)
+[0.468s] -- Found tf2_geometry_msgs: 0.25.16 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[0.468s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.468s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.468s] -- Found nav2_msgs: 1.1.19 (/opt/ros/humble/share/nav2_msgs/cmake)
+[0.481s] -- Found map_msgs: 2.1.0 (/opt/ros/humble/share/map_msgs/cmake)
+[0.499s] -- Found visualization_msgs: 4.9.0 (/opt/ros/humble/share/visualization_msgs/cmake)
+[0.524s] -- Found nav2_costmap_2d: 1.1.19 (/opt/ros/humble/share/nav2_costmap_2d/cmake)
+[0.619s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.716s] -- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[0.716s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[0.732s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.733s] -- Configured cppcheck include dirs: /home/pranav/turtle_test/src/m-explore-ros2/explore/include;$<BUILD_INTERFACE:/home/pranav/turtle_test/src/m-explore-ros2/explore/include>
+[0.733s] -- Configured cppcheck exclude dirs and/or files: 
+[0.733s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.734s] -- Added test 'lint_cmake' to check CMake code style
+[0.735s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.736s] -- Added test 'uncrustify' to check C / C++ code style
+[0.736s] -- Configured uncrustify additional arguments: 
+[0.737s] -- Added test 'xmllint' to check XML markup files
+[0.737s] -- Configuring done
+[0.824s] -- Generating done
+[0.833s] -- Build files have been written to: /home/pranav/turtle_test/build/explore_lite
+[0.841s] Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/explore -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/explore_lite
+[0.842s] Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/explore_lite -- -j20 -l20
+[0.884s] [35m[1mConsolidate compiler generated dependencies of target gtest[0m
+[0.886s] [35m[1mConsolidate compiler generated dependencies of target gtest_main[0m
+[0.890s] [35m[1mConsolidate compiler generated dependencies of target explore[0m
+[0.898s] [ 20%] Built target gtest
+[0.900s] [ 40%] Built target gtest_main
+[0.908s] [35m[1mConsolidate compiler generated dependencies of target test_explore[0m
+[0.917s] [ 60%] Built target test_explore
+[0.934s] [100%] Built target explore
+[0.945s] Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/explore_lite -- -j20 -l20
+[0.947s] Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/explore_lite
+[0.957s] -- Install configuration: ""
+[0.958s] -- Execute custom install script
+[0.958s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/include/explore//costmap_client.h
+[0.958s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/include/explore//costmap_tools.h
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/include/explore//explore.h
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/include/explore//frontier_search.h
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/config/params.yaml
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/config/params_costmap.yaml
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/launch/explore.launch.py
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/lib/explore_lite/explore
+[0.959s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/ament_index/resource_index/package_run_dependencies/explore_lite
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/ament_index/resource_index/parent_prefix_path/explore_lite
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/environment/ament_prefix_path.sh
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/environment/ament_prefix_path.dsv
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/environment/path.sh
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/environment/path.dsv
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/local_setup.bash
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/local_setup.sh
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/local_setup.zsh
+[0.960s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/local_setup.dsv
+[0.960s] -- Symlinking: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/package.dsv
+[0.965s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/ament_index/resource_index/packages/explore_lite
+[0.965s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.965s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/cmake/explore_liteConfig.cmake
+[0.965s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/cmake/explore_liteConfig-version.cmake
+[0.965s] -- Up-to-date symlink: /home/pranav/turtle_test/install/explore_lite/share/explore_lite/package.xml
+[0.978s] Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/explore_lite

@@ -7,6 +7,8 @@ A comprehensive ROS2 Humble navigation and mapping system for TurtleBot3 Burger,
 ## Table of Contents
 1. [Installation](#installation)
 2. [Quick Start Commands](#quick-start-commands)
+   - [2D Mapping & Navigation](#simulation-mode)
+   - [3D Mapping (RTAB-Map)](#3d-mapping-in-simulation-rtab-map)
 3. [System Architecture](#system-architecture)
 4. [Parameter Reference](#parameter-reference)
 5. [Troubleshooting](#troubleshooting)
@@ -58,6 +60,17 @@ sudo apt install -y \
 
 # Exploration (for auto-mapping)
 sudo apt install -y ros-humble-explore-lite
+
+# 3D SLAM with OAK-D Camera (Optional)
+sudo apt install -y \
+    ros-humble-depthai-ros \
+    ros-humble-rtabmap-ros \
+    ros-humble-image-transport \
+    ros-humble-compressed-image-transport
+
+# Python dependencies for OAK-D
+sudo apt install -y python3-pip
+pip3 install depthai
 ```
 
 ### Build the Workspace
@@ -88,6 +101,57 @@ ros2 launch grazen_system system.launch.py mode:=sim task:=map auto_map:=true si
 ros2 launch grazen_system system.launch.py mode:=sim task:=nav sim_world:=arena
 ```
 
+### 3D Mapping in Simulation (RTAB-Map)
+
+**NEW!** Generate **2D occupancy grids** + **3D point clouds** for drone path planning and advanced navigation.
+
+Uses **TurtleBot3 Waffle** (has RealSense D435 camera) and fuses **RGB-D + LiDAR** for high-quality 3D maps.
+
+```bash
+# Source workspace
+source ~/turtle_test/install/setup.bash
+
+# Launch 3D mapping in warehouse (default)
+ros2 launch grazen_system rtabmap_3d_sim.launch.py
+
+# Launch in arena world instead
+ros2 launch grazen_system rtabmap_3d_sim.launch.py world:=arena
+
+# Launch without teleop (if you want to script movement)
+ros2 launch grazen_system rtabmap_3d_sim.launch.py teleop:=false
+```
+
+**What this does:**
+- Launches Gazebo with **TurtleBot3 Waffle** (not Burger - has camera!)
+- Runs **RTAB-Map SLAM** fusing RGB-D camera + 2D LiDAR
+- Opens **RTAB-Map Viz** showing real-time 3D reconstruction
+- Opens **XTerm** with teleop keyboard control (WASD)
+
+**Outputs:**
+- **2D Occupancy Grid** on `/rtabmap/grid_map` (black/white, Nav2 compatible)
+- **3D Point Cloud** on `/rtabmap/cloud_map` (colored, for drones)
+- **Loop Closures** automatically detected and corrected
+- **Database saved** to `~/.ros/rtabmap.db` (can reopen later)
+
+**Best practices for quality maps:**
+1. **Drive slowly** - RTAB-Map needs time to process features
+2. **Overlap paths** - Revisit areas for loop closure (drift correction)
+3. **Good lighting** - Camera works best with even lighting
+4. **Smooth turns** - Avoid fast rotations that blur camera
+
+**View database later:**
+```bash
+# Reopen saved map (visualization only)
+rtabmap-databaseViewer ~/.ros/rtabmap.db
+```
+
+**Key parameters** (see `config/rtabmap_params.yaml`):
+- `Grid/Sensor: 2` - Fuses both depth camera AND LiDAR
+- `Grid/3D: false` - Projects to 2D for Nav2 compatibility
+- `cloud_voxel_size: 0.05` - 5cm resolution for point cloud
+- `Kp/MaxFeatures: 400` - Visual features for loop closure
+- `Reg/Force3DoF: true` - Constrain to ground plane (x,y,yaw)
+
 ### Real Robot Mode
 
 ```bash
@@ -105,6 +169,127 @@ ros2 launch grazen_system system.launch.py mode:=real task:=map auto_map:=true m
 ros2 launch grazen_system system.launch.py mode:=real task:=nav map_name:=my_map
 ```
 
+### Real Robot - 3D SLAM with OAK-D Camera (Optional)
+
+This mode fuses **wheel odometry**, **2D LiDAR (LDS-02)**, and **RGB-D camera (OAK-D)** for comprehensive 3D mapping.
+
+#### Robot Side (Raspberry Pi) - One-Time Setup
+
+**Install drivers and fix USB permissions:**
+
+```bash
+# SSH into TurtleBot3
+ssh ubuntu@<robot_ip>
+
+# Install camera driver and compression tools
+sudo apt update
+sudo apt install -y \
+    ros-humble-depthai-ros \
+    ros-humble-image-transport \
+    ros-humble-image-transport-plugins \
+    python3-pip
+
+pip3 install depthai
+
+# Set USB permissions for OAK-D (CRITICAL)
+sudo tee /etc/udev/rules.d/80-movidius.rules > /dev/null << 'EOF'
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"
+EOF
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+# Add user to USB groups
+sudo usermod -a -G dialout,plugdev ubuntu
+
+# Reboot for permissions to take effect
+sudo reboot
+```
+
+**After reboot, verify camera is detected:**
+```bash
+lsusb | grep 03e7
+# Should show: Bus XXX Device YYY: ID 03e7:2485 Intel Movidius MyriadX
+```
+
+#### Robot Side - Running 3D Mapping
+
+Mount OAK-D on top plate facing forward, then launch two terminals:
+
+```bash
+# Terminal 1: Robot Base (LiDAR + Wheels + Odometry)
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_bringup robot.launch.py
+
+# Terminal 2: OAK-D Camera (with compression for network efficiency)
+ros2 launch depthai_ros_driver camera.launch.py \
+    rgb.i_fps:=15 \
+    stereo.i_fps:=15
+```
+
+**Note:** Camera runs on robot and publishes compressed images to reduce network bandwidth.
+
+#### Laptop Side - RTAB-Map 3D SLAM
+
+**Install RTAB-Map and image tools:**
+
+```bash
+sudo apt update
+sudo apt install -y \
+    ros-humble-rtabmap-ros \
+    ros-humble-image-transport \
+    ros-humble-image-transport-plugins
+```
+
+**Launch RTAB-Map (runs on laptop, processes robot data):**
+
+```bash
+ros2 launch rtabmap_launch rtabmap.launch.py \
+    rtabmap_args:="--delete_db_on_start --Rtabmap/DetectionRate 1 --Odom/Strategy 0" \
+    visual_odometry:=false \
+    frame_id:=base_link \
+    subscribe_scan:=true \
+    subscribe_rgb:=true \
+    subscribe_depth:=true \
+    approx_sync:=true \
+    rgb_topic:=/oak/rgb/image_raw \
+    depth_topic:=/oak/stereo/image_raw \
+    camera_info_topic:=/oak/rgb/camera_info \
+    scan_topic:=/scan \
+    odom_topic:=/odom \
+    rgb_image_transport:=compressed \
+    depth_image_transport:=compressedDepth \
+    qos:=2 \
+    rviz:=true
+```
+
+**Parameters explained:**
+- `visual_odometry:=false` - Use wheel odometry (not visual tracking)
+- `subscribe_scan:=true` - Fuse LDS-02 2D laser into 3D map
+- `approx_sync:=true` - Handle network delays between robot and laptop
+- `*_image_transport:=compressed` - Reduce network bandwidth (WiFi friendly)
+
+**What you'll see:**
+- **2D occupancy grid** (black lines) from LDS-02 laser
+- **3D colored point cloud** overlaid from OAK-D depth camera
+- **Blue camera trajectory** showing robot path
+
+**Drive the robot manually:**
+```bash
+# Terminal 3: Teleop control
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+Move slowly (WASD) and watch the 3D map build in RTAB-Map's RViz window!
+
+**Saving the 3D map:**
+```bash
+# RTAB-Map auto-saves to ~/.ros/rtabmap.db
+# To export for later use, the database persists automatically
+# For 2D grid map extraction:
+ros2 run nav2_map_server map_saver_cli -f my_3d_map
+```
+
 ### Launch Arguments Reference
 
 | Argument | Values | Default | Description |
@@ -114,6 +299,7 @@ ros2 launch grazen_system system.launch.py mode:=real task:=nav map_name:=my_map
 | `auto_map` | `true`, `false` | `true` | Auto (explore_lite) or manual (WASD) mapping |
 | `sim_world` | `warehouse`, `arena` | `warehouse` | Gazebo world to load |
 | `map_name` | string | auto-generated | Name for saving/loading maps |
+| `slam_type` | `2d`, `3d` | `2d` | 2D (SLAM Toolbox) or 3D (RTAB-Map) SLAM *(3D in development)* |
 
 ---
 
@@ -152,6 +338,96 @@ ros2 launch grazen_system system.launch.py mode:=real task:=nav map_name:=my_map
 | `auto_mapper` | `auto_mapper.py` | Monitors explore_lite, auto-saves map when done |
 | `mission_manager` | `mission_manager.py` | Executes sequential waypoints from file |
 | `scan_resampler` | `scan_resampler.py` | Fixes variable LDS-02 scan counts (real robot only) |
+
+### Hardware Support
+
+**TurtleBot3 Burger Sensors:**
+- **LDS-02** (2D LiDAR) - 360° laser scanner for obstacle detection
+- **IMU** - Orientation and acceleration data
+- **Wheel Encoders** - Odometry via Dynamixel servos
+
+**Optional 3D SLAM Hardware:**
+- **OAK-D Lite AF** (RGB-D Camera) - Depth perception, 3D mapping, visual loop closure
+  - Connected via USB to Raspberry Pi
+  - Requires USB hub with external power (OAK-D draws ~2.5W)
+  - Used with RTAB-Map for 3D SLAM
+
+---
+
+## OAK-D Camera Setup (For 3D SLAM)
+
+### On Your Laptop (Testing)
+
+```bash
+# 1. Install driver
+sudo apt install -y ros-humble-depthai-ros
+pip3 install depthai
+
+# 2. Set up USB permissions
+sudo tee /etc/udev/rules.d/80-movidius.rules > /dev/null << 'EOF'
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"
+EOF
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+# 3. Add user to USB groups
+sudo usermod -a -G dialout,plugdev $USER
+
+# 4. Log out and log back in (or reboot)
+
+# 5. Connect OAK-D via USB-C cable and test
+ros2 launch depthai_ros_driver camera.launch.py
+
+# 6. In another terminal, view streams
+ros2 run rqt_image_view rqt_image_view /oak/rgb/image_raw
+ros2 run rqt_image_view rqt_image_view /oak/stereo/image_raw
+```
+
+### On TurtleBot3 Raspberry Pi (Deployment)
+
+**SSH into your TurtleBot3:**
+```bash
+ssh ubuntu@<turtlebot_ip>
+```
+
+**Run the same setup:**
+```bash
+# 1. Install driver
+sudo apt update
+sudo apt install -y ros-humble-depthai-ros python3-pip
+pip3 install depthai
+
+# 2. Set up USB permissions (SAME AS LAPTOP)
+sudo tee /etc/udev/rules.d/80-movidius.rules > /dev/null << 'EOF'
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"
+EOF
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+# 3. Add ubuntu user to groups
+sudo usermod -a -G dialout,plugdev ubuntu
+
+# 4. Reboot the robot
+sudo reboot
+```
+
+**After reboot, connect OAK-D to Raspberry Pi USB port and verify:**
+```bash
+# Check device detected
+lsusb | grep 03e7
+
+# Test camera
+ros2 launch depthai_ros_driver camera.launch.py
+```
+
+### Hardware Mounting Tips
+
+1. **Power:** OAK-D draws ~2.5W - use powered USB hub if Raspberry Pi USB ports are insufficient
+2. **Mounting:** Mount camera on top plate facing forward, aligned with robot center
+3. **Cable:** Use short USB-C cable (15-30cm) to minimize interference
+4. **Height:** Mount ~15-20cm above ground for best depth perception
 
 ---
 
@@ -425,6 +701,36 @@ pkill -9 -f rviz
 pkill -9 -f gazebo
 pkill -9 -f nav2
 pkill -9 -f slam
+```
+
+### 11. OAK-D Camera Not Detected
+
+**Symptom:** `depthai` fails with "No devices found" or USB errors.
+
+**Fix:**
+```bash
+# Check USB connection
+lsusb | grep 03e7  # Luxonis VID
+
+# Install udev rules for OAK-D
+echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+
+# Verify camera works standalone
+python3 -c "import depthai as dai; print(dai.Device.getAllAvailableDevices())"
+```
+
+### 12. OAK-D Poor Performance on Raspberry Pi
+
+**Symptom:** Low FPS, high CPU usage, overheating.
+
+**Fix:**
+```bash
+# Reduce camera resolution in launch parameters
+ros2 launch depthai_ros_driver camera.launch.py \
+    rgb.i_resolution:=720p \
+    depth.i_resolution:=400p \
+    rgb.i_fps:=15
 ```
 
 ---

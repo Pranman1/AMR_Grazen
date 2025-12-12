@@ -1,1 +1,52 @@
-/home/pranav/turtle_test/build/grazen_system/config/slam_params.yaml
+slam_toolbox:
+  ros__parameters:
+    use_sim_time: false  # Overridden by launch file based on mode
+    
+    # Core SLAM params
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_footprint
+    scan_topic: /scan
+    mode: mapping
+    
+    # Update frequently for explore_lite
+    map_update_interval: 1.0        # Update map every 1s (balanced)
+    resolution: 0.05
+    
+    # Movement thresholds - lower = more frequent updates
+    minimum_travel_distance: 0.2    # Update every 20cm moved
+    minimum_travel_heading: 0.2     # Update every 0.2 rad turned
+    minimum_time_interval: 0.5
+    
+    # CRITICAL FIX: Process every Nth scan to handle variable scan counts on real LDS-02
+    # Sim: 360 readings/scan (constant) - throttle has no effect
+    # Real: 250-256 readings/scan (varies) - throttling helps SLAM accept variations
+    throttle_scans: 1               # Process every scan (1=all, 2=every other, etc)
+    
+    # Scan matching
+    use_scan_matching: true
+    use_scan_barycenter: true
+    
+    # Laser settings
+    max_laser_range: 12.0           # Don't trust laser beyond 12m (works for sim and real)
+    minimum_range: 0.12             # LDS-02 minimum range (ignored in sim, needed for real)
+    
+    # FIX for real LDS-02: Variable scan count (250-256 readings vs sim's fixed 360)
+    # Process every scan but with larger queue to handle timing variations
+    scan_buffer_size: 30            # Larger buffer for variable-rate real LDS-02
+    scan_queue_size: 10             # Queue depth for scan processing (helps real robot)
+    
+    # Critical: Set angular range to accept variable scan densities
+    # Real LDS-02 varies in points/scan, this makes SLAM more tolerant
+    minimum_angle: -3.14159         # Full 360° coverage for both sim and real
+    maximum_angle: 3.14159
+    
+    # Loop closure helps SLAM be more robust to scan variations (sim and real)
+    do_loop_closing: true           # Enables loop closure for better mapping
+    loop_match_minimum_chain_size: 10
+    
+    # Performance
+    transform_timeout: 0.2
+    tf_buffer_duration: 30.0
+    stack_size_to_use: 40000000
+    enable_interactive_mode: true

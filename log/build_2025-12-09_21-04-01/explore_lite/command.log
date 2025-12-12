@@ -1,0 +1,6 @@
+Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/explore -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/explore_lite
+Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/explore -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/explore_lite
+Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/explore_lite -- -j20 -l20
+Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/explore_lite -- -j20 -l20
+Invoking command in '/home/pranav/turtle_test/build/explore_lite': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/explore_lite
+Invoked command in '/home/pranav/turtle_test/build/explore_lite' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/explore_lite

@@ -1,0 +1,76 @@
+# ==============================================================================
+# RTAB-Map Parameters for 3D Mapping (Gazebo Simulation)
+# ==============================================================================
+# Generates: 2D occupancy grid (for Nav2) + 3D point cloud (for drones)
+# Optimized for TurtleBot3 Waffle with RealSense D435 + LDS-02 LiDAR
+# Based on rtabmap_demos best practices
+# ==============================================================================
+
+rtabmap:
+  rtabmap:
+    ros__parameters:
+      
+      # --- GENERAL SETTINGS ---
+      use_action_for_goal: true
+      publish_tf: true
+      
+      # --- MAPPING MODE ---
+      Mem/IncrementalMemory: "true"      # SLAM mode (vs localization)
+      Mem/InitWMWithAllNodes: "false"    # Don't load entire map to memory
+      
+      # --- REGISTRATION (3DoF for ground robot) ---
+      Reg/Force3DoF: "true"              # Constrain to x,y,yaw (ignore roll/pitch/z)
+      Reg/Strategy: "1"                  # 0=Vis, 1=ICP, 2=Vis+ICP (1=use LiDAR)
+      
+      # --- LOOP CLOSURE ---
+      Rtabmap/DetectionRate: "1.0"       # Process every frame for mapping
+      Kp/MaxFeatures: "400"              # Visual features per image (400-600 is good)
+      Kp/DetectorStrategy: "6"           # 0=SURF, 6=GFTT, 8=FAST (6 is robust)
+      RGBD/ProximityBySpace: "true"      # Enable spatial proximity loop closure
+      RGBD/ProximityMaxGraphDepth: "0"   # Use all previous nodes
+      RGBD/NeighborLinkRefining: "true"  # Refine links between neighbors
+      RGBD/AngularUpdate: "0.01"         # Add keyframe every 0.01 rad (~0.5°)
+      RGBD/LinearUpdate: "0.01"          # Add keyframe every 0.01 m (1 cm)
+      
+      # --- ODOMETRY ---
+      # Using wheel odometry from Gazebo, not visual odometry
+      RGBD/Enabled: "false"              # Disable visual odometry (using /odom topic)
+      
+      # --- GRID GENERATION (2D Occupancy Grid) ---
+      Grid/FromDepth: "true"             # Generate grid from depth + scan
+      Grid/RayTracing: "true"            # Mark unknown space as free
+      Grid/3D: "false"                   # 2D projection for Nav2 compatibility
+      Grid/Sensor: "2"                   # 0=depth only, 1=scan only, 2=both (BEST!)
+      Grid/RangeMax: "5.0"               # Max sensor range (meters)
+      Grid/RangeMin: "0.0"               # Min sensor range
+      Grid/CellSize: "0.05"              # Grid resolution (5cm cells)
+      Grid/NoiseFilteringRadius: "0.1"   # Filter noise within 10cm
+      Grid/NoiseFilteringMinNeighbors: "5"  # Need 5 neighbors to be valid
+      Grid/MaxGroundHeight: "0.0"        # Ground level (anything below is ignored)
+      Grid/MaxObstacleHeight: "2.0"      # Max obstacle height to consider
+      Grid/MinClusterSize: "20"          # Min points to be an obstacle
+      Grid/GroundIsObstacle: "false"     # Ground is not an obstacle
+      Grid/FootprintRadius: "0.1"        # Robot footprint for clearance
+      
+      # --- POINT CLOUD (3D Visualization) ---
+      cloud_decimation: "4"              # Downsample cloud by 4x (performance)
+      cloud_max_depth: "5.0"             # Max depth for point cloud (meters)
+      cloud_voxel_size: "0.05"           # Voxel grid filter size (5cm)
+      cloud_floor_culling_height: "0.0"  # Remove floor points
+      cloud_ceiling_culling_height: "2.5"  # Remove ceiling points
+      
+      # --- OPTIMIZER ---
+      Optimizer/Strategy: "1"            # 1=g2o (fast), 0=TORO (accurate)
+      Optimizer/GravitySigma: "0.3"      # Use gravity constraint (IMU-like)
+      
+      # --- MEMORY MANAGEMENT ---
+      Mem/STMSize: "30"                  # Short-term memory size (recent nodes)
+      Mem/RehearsalSimilarity: "0.6"     # Similarity threshold for rehearsal
+      Rtabmap/TimeThr: "0"               # No time limit for map processing
+      Rtabmap/MemoryThr: "300"           # Keep max 300 locations in memory
+      
+      # --- VISUALIZATION ---
+      Rtabmap/PublishStats: "true"       # Publish statistics
+      Rtabmap/PublishLikelihood: "true"  # Publish loop closure likelihood
+      Rtabmap/PublishRAMUsage: "true"    # Monitor memory usage
+

@@ -1,1 +1,0 @@
-/home/pranav/turtle_test/src/turtlebot3/turtlebot3_teleop/setup.py

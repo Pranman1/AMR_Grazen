@@ -1,1 +1,7 @@
-/home/pranav/turtle_test/build/grazen_system/config/system_config.yaml
+grazen_system:
+  ros__parameters:
+    # Default map name (searched for in the 'maps' folder)
+    default_map: "warehouse_map"
+    
+    # Default waypoints file (searched for in 'config' folder)
+    default_waypoints: "waypoints.txt"

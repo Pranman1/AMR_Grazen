@@ -1,0 +1,92 @@
+[0.435s] Invoking command in '/home/pranav/turtle_test/build/multirobot_map_merge': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/map_merge -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/multirobot_map_merge
+[0.459s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.546s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.553s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[0.584s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.585s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.591s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.602s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.615s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.637s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.638s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.733s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.767s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.776s] -- Found image_geometry: 3.2.1 (/opt/ros/humble/share/image_geometry/cmake)
+[0.795s] -- Found map_msgs: 2.1.0 (/opt/ros/humble/share/map_msgs/cmake)
+[0.821s] -- Found tf2_geometry_msgs: 0.25.16 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[0.824s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.825s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.901s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.974s] -- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[0.976s] Checking MD5 sum of /home/pranav/turtle_test/build/multirobot_map_merge/map00.pgm
+[0.987s] /home/pranav/turtle_test/build/multirobot_map_merge/map00.pgm: OK
+[0.987s] Checking MD5 sum of /home/pranav/turtle_test/build/multirobot_map_merge/map05.pgm
+[0.997s] /home/pranav/turtle_test/build/multirobot_map_merge/map05.pgm: OK
+[1.000s] Checking MD5 sum of /home/pranav/turtle_test/build/multirobot_map_merge/2011-08-09-12-22-52.pgm
+[1.030s] /home/pranav/turtle_test/build/multirobot_map_merge/2011-08-09-12-22-52.pgm: OK
+[1.033s] Checking MD5 sum of /home/pranav/turtle_test/build/multirobot_map_merge/2012-01-28-11-12-01.pgm
+[1.064s] /home/pranav/turtle_test/build/multirobot_map_merge/2012-01-28-11-12-01.pgm: OK
+[1.065s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[1.074s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.074s] -- Configured cppcheck include dirs: /home/pranav/turtle_test/src/m-explore-ros2/map_merge/include;$<BUILD_INTERFACE:/home/pranav/turtle_test/src/m-explore-ros2/map_merge/include>
+[1.074s] -- Configured cppcheck exclude dirs and/or files: 
+[1.075s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.075s] -- Added test 'lint_cmake' to check CMake code style
+[1.076s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.077s] -- Added test 'uncrustify' to check C / C++ code style
+[1.078s] -- Configured uncrustify additional arguments: 
+[1.078s] -- Added test 'xmllint' to check XML markup files
+[1.080s] -- Configuring done
+[1.130s] -- Generating done
+[1.138s] -- Build files have been written to: /home/pranav/turtle_test/build/multirobot_map_merge
+[1.285s] Invoked command in '/home/pranav/turtle_test/build/multirobot_map_merge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/pranav/turtle_test/src/m-explore-ros2/map_merge -DCMAKE_INSTALL_PREFIX=/home/pranav/turtle_test/install/multirobot_map_merge
+[1.286s] Invoking command in '/home/pranav/turtle_test/build/multirobot_map_merge': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/multirobot_map_merge -- -j20 -l20
+[1.317s] [35m[1mConsolidate compiler generated dependencies of target gtest_main[0m
+[1.318s] [35m[1mConsolidate compiler generated dependencies of target combine_grids[0m
+[1.320s] [35m[1mConsolidate compiler generated dependencies of target gtest[0m
+[1.329s] [ 16%] Built target gtest_main
+[1.331s] [ 33%] Built target gtest
+[1.335s] [ 66%] Built target combine_grids
+[1.348s] [35m[1mConsolidate compiler generated dependencies of target test_merging_pipeline[0m
+[1.348s] [35m[1mConsolidate compiler generated dependencies of target map_merge[0m
+[1.360s] [ 83%] Built target test_merging_pipeline
+[1.378s] [100%] Built target map_merge
+[1.387s] Invoked command in '/home/pranav/turtle_test/build/multirobot_map_merge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/pranav/turtle_test/build/multirobot_map_merge -- -j20 -l20
+[1.389s] Invoking command in '/home/pranav/turtle_test/build/multirobot_map_merge': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/multirobot_map_merge
+[1.396s] -- Install configuration: ""
+[1.397s] -- Execute custom install script
+[1.397s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/include/map_merge//map_merge.h
+[1.397s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/include/map_merge//ros1_names.hpp
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/from_map_server.launch.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/map_merge.launch.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/map_merge.rviz
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/bringup_launch.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/config/nav2_multirobot_params_1.yaml
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/config/nav2_multirobot_params_2.yaml
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/multi_tb3_simulation_launch.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/slam_toolbox.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/tb3_simulation_launch.py
+[1.398s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/launch/tb3_simulation/worlds/world_only.model
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/config/params.yaml
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/lib/multirobot_map_merge/map_merge
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/library_path.sh
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/library_path.dsv
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/ament_index/resource_index/package_run_dependencies/multirobot_map_merge
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/ament_index/resource_index/parent_prefix_path/multirobot_map_merge
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/ament_prefix_path.sh
+[1.399s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/ament_prefix_path.dsv
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/path.sh
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/environment/path.dsv
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/local_setup.bash
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/local_setup.sh
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/local_setup.zsh
+[1.400s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/local_setup.dsv
+[1.400s] -- Symlinking: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/package.dsv
+[1.409s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/ament_index/resource_index/packages/multirobot_map_merge
+[1.409s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.409s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/cmake/ament_cmake_export_libraries-extras.cmake
+[1.409s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/cmake/multirobot_map_mergeConfig.cmake
+[1.409s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/cmake/multirobot_map_mergeConfig-version.cmake
+[1.410s] -- Up-to-date symlink: /home/pranav/turtle_test/install/multirobot_map_merge/share/multirobot_map_merge/package.xml
+[1.410s] -- Up-to-date: /home/pranav/turtle_test/install/multirobot_map_merge/lib/libcombine_grids.a
+[1.412s] Invoked command in '/home/pranav/turtle_test/build/multirobot_map_merge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/pranav/turtle_test/build/multirobot_map_merge
