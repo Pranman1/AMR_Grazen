@@ -16,6 +16,7 @@
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/config/slam_params.yaml
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/config/system_config.yaml
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/config/rtabmap_params.yaml
+/home/pranav/turtle_test/install/grazen_system/share/grazen_system/launch/rtabmap_3d_real.launch.py
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/launch/system.launch.py
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/launch/rtabmap_3d_sim.launch.py
 /home/pranav/turtle_test/install/grazen_system/share/grazen_system/maps

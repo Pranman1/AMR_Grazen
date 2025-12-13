@@ -19,6 +19,7 @@ grazen_system/auto_mapper.py
 grazen_system/manual_mapper.py
 grazen_system/mission_manager.py
 grazen_system/scan_resampler.py
+launch/rtabmap_3d_real.launch.py
 launch/rtabmap_3d_sim.launch.py
 launch/system.launch.py
 resource/grazen_system

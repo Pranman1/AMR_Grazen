@@ -103,54 +103,89 @@ ros2 launch grazen_system system.launch.py mode:=sim task:=nav sim_world:=arena
 
 ### 3D Mapping in Simulation (RTAB-Map)
 
-**NEW!** Generate **2D occupancy grids** + **3D point clouds** for drone path planning and advanced navigation.
+Generate **2D occupancy grids** (for Nav2) + **3D point clouds** (for drones) using RGB-D camera + LiDAR fusion.
 
-Uses **TurtleBot3 Waffle** (has RealSense D435 camera) and fuses **RGB-D + LiDAR** for high-quality 3D maps.
+#### Prerequisites: Enable Depth Camera
+
+The default TurtleBot3 Waffle model has an RGB-only camera. We modified it to add depth sensing.
+
+**The modification is in:**
+```
+src/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_waffle/model.sdf
+```
+
+**Key changes made:**
+1. Changed `<sensor name="camera" type="camera">` → `type="depth"`
+2. Added `camera_rgb_optical_frame` link and joint (for TF alignment)
+3. Reduced resolution to 640x480 (performance)
+4. Set depth range 0.1m - 5.0m
+
+If you need to redo this modification, see the comments in:
+```
+/opt/ros/humble/share/rtabmap_demos/launch/turtlebot3/turtlebot3_sim_rgbd_demo.launch.py
+```
+
+#### Launch Commands
 
 ```bash
 # Source workspace
 source ~/turtle_test/install/setup.bash
 
-# Launch 3D mapping in warehouse (default)
-ros2 launch grazen_system rtabmap_3d_sim.launch.py
-
-# Launch in arena world instead
+# Launch 3D mapping (world is REQUIRED)
+ros2 launch grazen_system rtabmap_3d_sim.launch.py world:=house
 ros2 launch grazen_system rtabmap_3d_sim.launch.py world:=arena
+ros2 launch grazen_system rtabmap_3d_sim.launch.py world:=warehouse
 
-# Launch without teleop (if you want to script movement)
-ros2 launch grazen_system rtabmap_3d_sim.launch.py teleop:=false
+# Localization mode (reuse existing map)
+ros2 launch grazen_system rtabmap_3d_sim.launch.py world:=house localization:=true
 ```
 
-**What this does:**
-- Launches Gazebo with **TurtleBot3 Waffle** (not Burger - has camera!)
-- Runs **RTAB-Map SLAM** fusing RGB-D camera + 2D LiDAR
-- Opens **RTAB-Map Viz** showing real-time 3D reconstruction
-- Opens **XTerm** with teleop keyboard control (WASD)
-
-**Outputs:**
-- **2D Occupancy Grid** on `/rtabmap/grid_map` (black/white, Nav2 compatible)
-- **3D Point Cloud** on `/rtabmap/cloud_map` (colored, for drones)
-- **Loop Closures** automatically detected and corrected
-- **Database saved** to `~/.ros/rtabmap.db` (can reopen later)
-
-**Best practices for quality maps:**
-1. **Drive slowly** - RTAB-Map needs time to process features
-2. **Overlap paths** - Revisit areas for loop closure (drift correction)
-3. **Good lighting** - Camera works best with even lighting
-4. **Smooth turns** - Avoid fast rotations that blur camera
-
-**View database later:**
+**Teleop (separate terminal):**
 ```bash
-# Reopen saved map (visualization only)
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+#### What This Launches
+
+| Component | Purpose |
+|-----------|---------|
+| Gazebo | Simulation with TurtleBot3 Waffle |
+| `rgbd_sync` | Syncs RGB + depth images (critical!) |
+| `rtabmap` | SLAM with LiDAR + camera fusion |
+| `rtabmap_viz` | 3D point cloud visualization |
+| `point_cloud_xyz` | Converts depth → point cloud |
+| `obstacles_detection` | Floor/obstacle segmentation for Nav2 |
+| Nav2 | Full navigation stack |
+| RViz | 2D map visualization |
+
+#### Outputs
+
+- **2D Occupancy Grid**: `/map` topic (Nav2 compatible)
+- **3D Point Cloud**: `/rtabmap/cloud_map` (colored, for drones)
+- **Database**: `~/.ros/rtabmap.db` (saved automatically)
+
+#### Key Parameters (in launch file)
+
+```python
+'Grid/Sensor': '2'           # Fuse BOTH camera + LiDAR
+'Grid/RangeMax': '3.5'       # Max obstacle detection range
+'Reg/Strategy': '1'          # ICP registration (trust LiDAR)
+'Reg/Force3DoF': 'true'      # Constrain to 2D (ground robot)
+'RGBD/NeighborLinkRefining': 'True'  # Refine odometry
+```
+
+#### View Saved Map Later
+
+```bash
 rtabmap-databaseViewer ~/.ros/rtabmap.db
 ```
 
-**Key parameters** (see `config/rtabmap_params.yaml`):
-- `Grid/Sensor: 2` - Fuses both depth camera AND LiDAR
-- `Grid/3D: false` - Projects to 2D for Nav2 compatibility
-- `cloud_voxel_size: 0.05` - 5cm resolution for point cloud
-- `Kp/MaxFeatures: 400` - Visual features for loop closure
-- `Reg/Force3DoF: true` - Constrain to ground plane (x,y,yaw)
+#### Tips for Quality Maps
+
+1. **Drive slowly** - RTAB-Map needs time to process visual features
+2. **Revisit areas** - Loop closures correct drift
+3. **Smooth turns** - Fast rotations blur the camera
+4. **Good lighting** - Depth cameras work best with even lighting
 
 ### Real Robot Mode
 
