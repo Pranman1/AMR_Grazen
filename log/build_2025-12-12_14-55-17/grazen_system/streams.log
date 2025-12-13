@@ -1,0 +1,25 @@
+[0.418s] Invoking command in '/home/pranav/turtle_test/src/grazen_system': CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world:/home/pranav/turtle_test/install/turtlebot3:/home/pranav/turtle_test/install/turtlebot3_simulations:/home/pranav/turtle_test/install/turtlebot3_bringup:/home/pranav/turtle_test/install/turtlebot3_node:/home/pranav/turtle_test/install/turtlebot3_fake_node:/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/turtlebot3_manipulation_gazebo:/home/pranav/turtle_test/install/turtlebot3_description:/home/pranav/turtle_test/install/multirobot_map_merge:/home/pranav/turtle_test/install/dynamixel_sdk_examples:/home/pranav/turtle_test/install/dynamixel_sdk_custom_interfaces:/home/pranav/turtle_test/install/dynamixel_sdk PYTHONPATH=/home/pranav/turtle_test/build/grazen_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/grazen_system build --build-base /home/pranav/turtle_test/build/grazen_system/build install --record /home/pranav/turtle_test/build/grazen_system/install.log --single-version-externally-managed install_data
+[0.576s] running egg_info
+[0.577s] writing ../../build/grazen_system/grazen_system.egg-info/PKG-INFO
+[0.577s] writing dependency_links to ../../build/grazen_system/grazen_system.egg-info/dependency_links.txt
+[0.577s] writing entry points to ../../build/grazen_system/grazen_system.egg-info/entry_points.txt
+[0.577s] writing requirements to ../../build/grazen_system/grazen_system.egg-info/requires.txt
+[0.577s] writing top-level names to ../../build/grazen_system/grazen_system.egg-info/top_level.txt
+[0.578s] reading manifest file '../../build/grazen_system/grazen_system.egg-info/SOURCES.txt'
+[0.578s] writing manifest file '../../build/grazen_system/grazen_system.egg-info/SOURCES.txt'
+[0.579s] running build
+[0.579s] running build_py
+[0.579s] running install
+[0.579s] running install_lib
+[0.579s] running install_data
+[0.580s] copying launch/rtabmap_3d_sim.launch.py -> /home/pranav/turtle_test/install/grazen_system/share/grazen_system/launch
+[0.580s] running install_egg_info
+[0.581s] removing '/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system-0.0.0-py3.10.egg-info' (and everything under it)
+[0.581s] Copying ../../build/grazen_system/grazen_system.egg-info to /home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages/grazen_system-0.0.0-py3.10.egg-info
+[0.581s] running install_scripts
+[0.594s] Installing auto_mapper script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[0.594s] Installing manual_mapper script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[0.594s] Installing mission_manager script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[0.594s] Installing scan_resampler script to /home/pranav/turtle_test/install/grazen_system/lib/grazen_system
+[0.594s] writing list of installed files to '/home/pranav/turtle_test/build/grazen_system/install.log'
+[0.609s] Invoked command in '/home/pranav/turtle_test/src/grazen_system' returned '0': CMAKE_PREFIX_PATH=/home/pranav/turtle_test/install/turtlebot3_navigation2:/home/pranav/turtle_test/install/turtlebot3_gazebo:/home/pranav/turtle_test/install/turtlebot3_cartographer:/home/pranav/turtle_test/install/explore_lite:/home/pranav/turtle_test/install/aws_robomaker_small_warehouse_world:/home/pranav/turtle_test/install/turtlebot3:/home/pranav/turtle_test/install/turtlebot3_simulations:/home/pranav/turtle_test/install/turtlebot3_bringup:/home/pranav/turtle_test/install/turtlebot3_node:/home/pranav/turtle_test/install/turtlebot3_fake_node:/home/pranav/turtle_test/install/turtlebot3_msgs:/home/pranav/turtle_test/install/turtlebot3_manipulation_gazebo:/home/pranav/turtle_test/install/turtlebot3_description:/home/pranav/turtle_test/install/multirobot_map_merge:/home/pranav/turtle_test/install/dynamixel_sdk_examples:/home/pranav/turtle_test/install/dynamixel_sdk_custom_interfaces:/home/pranav/turtle_test/install/dynamixel_sdk PYTHONPATH=/home/pranav/turtle_test/build/grazen_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pranav/turtle_test/install/grazen_system/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/grazen_system build --build-base /home/pranav/turtle_test/build/grazen_system/build install --record /home/pranav/turtle_test/build/grazen_system/install.log --single-version-externally-managed install_data
