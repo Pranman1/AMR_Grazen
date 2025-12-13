@@ -105,15 +105,17 @@ def generate_launch_description():
     )
     
     # --- RGBD SYNC (syncs RGB + depth) ---
+    # OAK-D has ~30-100ms offset between RGB and depth - this is normal
     rgbd_sync = Node(
         package='rtabmap_sync',
         executable='rgbd_sync',
         name='rgbd_sync',
         output='screen',
         parameters=[{
-            'approx_sync': True,   # Approximate sync for real sensors
+            'approx_sync': True,              # Approximate sync for real sensors
+            'approx_sync_max_interval': 0.2,  # Allow up to 200ms difference (OAK-D needs this)
             'use_sim_time': False,
-            'qos': 2,              # BEST_EFFORT for sensor data
+            'qos': 2,                         # BEST_EFFORT for sensor data
         }],
         remappings=oakd_remappings
     )
