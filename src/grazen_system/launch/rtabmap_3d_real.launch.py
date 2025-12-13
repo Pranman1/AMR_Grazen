@@ -48,6 +48,11 @@ def generate_launch_description():
         'Reg/Strategy': '1',            # ICP (trust LiDAR)
         'Reg/Force3DoF': 'true',        # 2D robot
         'RGBD/NeighborLinkRefining': 'True',
+        # Depth constraints (match LiDAR range)
+        'Rtabmap/MaxDepth': '3.5',      # Ignore depth beyond 3.5m
+        'Rtabmap/MinDepth': '0.2',      # Ignore depth closer than 20cm
+        'Vis/MaxDepth': '3.5',          # Visual features max depth
+        'Vis/MinDepth': '0.2',          # Visual features min depth
         # Grid Generation
         'Grid/RayTracing': 'true',
         'Grid/3D': 'false',             # 2D occupancy for Nav2
@@ -57,6 +62,9 @@ def generate_launch_description():
         'Grid/NormalsSegmentation': 'false',
         'Grid/MaxGroundHeight': '0.05',
         'Grid/MaxObstacleHeight': '0.4',
+        # Noise filtering
+        'Grid/NoiseFilteringRadius': '0.1',
+        'Grid/NoiseFilteringMinNeighbors': '5',
         # Optimizer
         'Optimizer/GravitySigma': '0',
     }
@@ -105,7 +113,7 @@ def generate_launch_description():
     )
     
     # --- RGBD SYNC (syncs RGB + depth) ---
-    # OAK-D has ~30-100ms offset between RGB and depth - this is normal
+    # OAK-D has ~30-100ms offset between RGB and depth
     rgbd_sync = Node(
         package='rtabmap_sync',
         executable='rgbd_sync',
@@ -113,7 +121,7 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'approx_sync': True,              # Approximate sync for real sensors
-            'approx_sync_max_interval': 0.2,  # Allow up to 200ms difference (OAK-D needs this)
+            'approx_sync_max_interval': 0.05, # 50ms max (tighter sync, less drift)
             'use_sim_time': False,
             'qos': 2,                         # BEST_EFFORT for sensor data
         }],
@@ -170,9 +178,9 @@ def generate_launch_description():
         name='point_cloud_xyz',
         output='screen',
         parameters=[{
-            'decimation': 4,        # Downsample for Pi performance
+            'decimation': 2,        # Match sim (was 4, too aggressive)
             'max_depth': 3.0,
-            'voxel_size': 0.05,
+            'voxel_size': 0.02,     # Match sim (was 0.05, too coarse)
             'use_sim_time': False,
             'qos': 2,
         }],
